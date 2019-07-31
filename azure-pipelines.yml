@@ -1,0 +1,55 @@
+# Pipieline used for building NextJS applications by ACE team
+
+variables:
+  YARN_CACHE_FOLDER: $(Pipeline.Workspace)/.yarn
+
+trigger:
+- master
+
+stages:
+  - stage: SsrBuild
+    jobs:
+      - job: SsrBuild
+        steps:
+        - task: DeleteFiles@1
+          displayName: 'Cleaning before artifact ziping'
+          inputs:
+            SourceFolder: '$(System.DefaultWorkingDirectory)'
+            Contents: |
+              .git
+              .gitignore
+              README.md
+              .storybook
+              build
+
+        - template: azure-pipelines/templates/compress-and-publish-steps.yml
+          parameters:
+            inputFolderOrFile: $(System.DefaultWorkingDirectory)
+            compressedFileName: '$(Build.BuildId)-ssr'
+            artifactName: 'ssr'
+
+  - stage: SitBuild
+    dependsOn: SsrBuild
+    jobs:
+      - job: StaticSitBuild
+
+        variables:
+        - group: "app envs - sit"
+
+        steps:
+          - template: azure-pipelines/templates/static-build-steps.yml
+            parameters:
+              artifactSuffix: 'sit'
+
+  - stage: ProdBuild
+    dependsOn: SsrBuild
+    jobs:
+      - job: StaticProdBuild
+
+        variables:
+        - group: "app envs - prod"
+
+        steps:
+          - template: azure-pipelines/templates/static-build-steps.yml
+            parameters:
+              artifactSuffix: 'prod'
