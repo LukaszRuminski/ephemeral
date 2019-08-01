@@ -1,0 +1,19 @@
+pr:
+  - master
+  paths:
+    exclude:
+      README.md
+
+steps:
+  - task: YarnInstaller@3
+    displayName: 'Install Yarn'
+
+  - task: Yarn@3
+    displayName: 'Yarn install'
+    inputs:
+      Arguments: install
+
+  - task: Yarn@3
+    displayName: 'Yarn export'
+    inputs:
+      Arguments: export
