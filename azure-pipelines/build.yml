@@ -22,7 +22,7 @@ stages:
               .storybook
               build
 
-        - template: azure-pipelines/templates/compress-and-publish-steps.yml
+        - template: templates/compress-and-publish-steps.yml
           parameters:
             inputFolderOrFile: $(System.DefaultWorkingDirectory)
             compressedFileName: '$(Build.BuildId)-ssr'
@@ -37,7 +37,7 @@ stages:
         - group: "app envs - sit"
 
         steps:
-          - template: azure-pipelines/templates/static-build-steps.yml
+          - template: templates/static-build-steps.yml
             parameters:
               artifactSuffix: 'sit'
 
@@ -50,6 +50,6 @@ stages:
         - group: "app envs - prod"
 
         steps:
-          - template: azure-pipelines/templates/static-build-steps.yml
+          - template: templates/static-build-steps.yml
             parameters:
               artifactSuffix: 'prod'
