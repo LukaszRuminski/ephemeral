@@ -1,9 +1,8 @@
 {
-    "name": "mw-nextjs-seed",
+    "name": "<project_name>",
     "version": "0.0.1",
-    "repository": "pg-consumer@vs-ssh.visualstudio.com:v3/pg-consumer/MW-Framework/MW-nextjs-seed",
-    "author": "ACE Team <batorski.kb@pg.com>",
-    "license": "MIT",
+    "author": "<author>",
+    "license": "unlicensed",
     "scripts": {
         "dev": "yarn check-quality && node server.js",
         "preview": "npm install yarn -g && yarn install && next build",
