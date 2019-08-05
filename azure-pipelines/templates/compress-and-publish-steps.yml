@@ -1,15 +1,15 @@
 parameters:
   inputFolderOrFile: ''
-  compressedFileName: '' 
-  artifactName: '' 
+  compressedFileName: ''
+  artifactName: ''
 
 steps:
   - task: ArchiveFiles@2
-    displayName: 'Zip artefact'
+    displayName: 'Zip artifact'
     inputs:
       rootFolderOrFile: '${{parameters.inputFolderOrFile}}'
-      archiveFile: '$(Build.ArtifactStagingDirectory)/${{parameters.compressedFileName}}.zip' 
+      archiveFile: '$(Build.ArtifactStagingDirectory)/${{parameters.compressedFileName}}.zip'
       includeRootFolder: false
 
-  - publish: '$(Build.ArtifactStagingDirectory)/${{parameters.compressedFileName}}.zip' 
+  - publish: '$(Build.ArtifactStagingDirectory)/${{parameters.compressedFileName}}.zip'
     artifact: ${{parameters.artifactName}}

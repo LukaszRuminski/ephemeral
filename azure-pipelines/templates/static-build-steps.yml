@@ -1,15 +1,15 @@
 parameters:
-  artifactSuffix: '' 
+  artifactSuffix: ''
 
 steps:
   - download: current
     artifact: ssr
 
   - task: ExtractFiles@1
-    displayName: 'Unzip SSR artefact'
+    displayName: 'Unzip SSR artifact'
     inputs:
       archiveFilePatterns: '$(Agent.BuildDirectory)/ssr/*.zip'
-      destinationFolder: '$(System.DefaultWorkingDirectory)/temp'              
+      destinationFolder: '$(System.DefaultWorkingDirectory)/temp'
 
   - task: CacheBeta@0
     displayName: Cache Yarn packages
@@ -22,9 +22,6 @@ steps:
 
   - script: yarn --frozen-lockfile
 
-  - task: YarnInstaller@3
-    displayName: 'Install Yarn'
-
   - task: Yarn@3
     displayName: 'Yarn install'
     inputs:
@@ -35,14 +32,14 @@ steps:
     inputs:
       Arguments: export
 
-  - task: DeleteFiles@1
-    displayName: 'Delete web.config from static folder'
-    inputs:
-      Contents: out/static/web.config
-    continueOnError: true
+  # - task: DeleteFiles@1
+  #   displayName: 'Delete web.config from static folder'
+  #   inputs:
+  #     Contents: out/static/web.config
+  #   continueOnError: true
 
   - template: compress-and-publish-steps.yml
     parameters:
       inputFolderOrFile: '$(System.DefaultWorkingDirectory)/out'
-      compressedFileName:  '$(Build.BuildId)-static-${{parameters.artifactSuffix}}'  
+      compressedFileName:  '$(Build.BuildId)-static-${{parameters.artifactSuffix}}'
       artifactName: 'static-${{parameters.artifactSuffix}}'
