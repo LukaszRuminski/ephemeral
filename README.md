@@ -25,4 +25,8 @@ Opinionated kick starter for MW projects on Next.js framework. Consist of useful
 ## TODO
 - How to test using Jest?  (write, configure & run)
 - yarn - audit, outdated tasks
-- add web.config (optimal using webpack loaders)
+- Add web.config (using webpack loaders)
+- Release YAML configuration
+
+## Estimated saving
+Set up the project with all above features can take even up to 10 MD
