@@ -1,7 +1,7 @@
 {
-    "name": "<project_name>",
+    "name": "project-name",
     "version": "0.0.1",
-    "author": "<author>",
+    "author": "author",
     "license": "unlicensed",
     "scripts": {
         "dev": "yarn check-quality && node server.js",
@@ -10,15 +10,21 @@
         "export": "yarn build && next export",
         "start": "node server.js",
         "lint": "yarn lint:js",
-        "lint:js": "eslint *.js",
+        "lint:js": "eslint **/*.js --fix",
         "test": "jest --watch",
         "test:ci": "jest --passWithNoTests",
         "check-quality": "yarn test:ci && yarn lint"
     },
     "dependencies": {
+        "@mw/image": "^1.0.5",
+        "@mw/video": "^1.0.7",
+        "@zeit/next-css": "^1.0.1",
         "next": "^9.0.2",
+        "next-images": "^1.2.0",
+        "prop-types": "^15.7.2",
         "react": "^16.8.6",
-        "react-dom": "^16.8.6"
+        "react-dom": "^16.8.6",
+        "styled-components": "^4.3.2"
     },
     "devDependencies": {
         "@babel/plugin-proposal-decorators": "^7.4.4",

@@ -1,46 +1,9 @@
 import React from 'react'
-import styled from 'styled-components'
+import PropTypes from 'prop-types'
 import Image from '@mw/image'
+import { AbsolutePositionedChild, ImageWrapper, Layout, LayoutColumn } from './index.styles'
 
-const Layout = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-`
-
-const LayoutColumn = styled.div`
-  width: 100%;
-  
-  @media(min-width: 768px){
-    width: 50%;
-  }
-  
-  @media(min-width: 1200px){
-    width: 25%;
-  }
-`
-
-const ImageWrapper = styled.div`
-  margin: 5px 0;
-  
-  @media(min-width: 768px){
-    margin: 10px;
-  }
-  
-  @media(min-width: 1200px){
-    margin: 5px;
-  }
-`
-
-const AbsolutePositionedChild = styled.div`
-  position: absolute;
-  color: white;
-  text-align: center;
-  bottom: 0;
-  width: 100%;
-  background-color: rgba(0,0,0,.5);
-`
-
-const Home = ({ images }) => {
+const MWImagePage = ({ images }) => {
     return (
         <>
             <h2>Images</h2>
@@ -49,7 +12,7 @@ const Home = ({ images }) => {
                     images.map((id) => (
                         <LayoutColumn key={id}>
                             <ImageWrapper>
-                                <Image imageId={id} cloudName='procter-gamble' />
+                                <Image imageId={id} cloudName='procter-gamble'/>
                             </ImageWrapper>
                         </LayoutColumn>
                     ))
@@ -61,10 +24,7 @@ const Home = ({ images }) => {
                     images.map((id) => (
                         <LayoutColumn key={id}>
                             <ImageWrapper>
-                                <Image imageId={id}
-                                       cloudName='procter-gamble'
-                                       widthToHeightRatio={1.5}
-                                >
+                                <Image imageId={id} cloudName='procter-gamble' widthToHeightRatio={1.5}>
                                     {
                                         (props, state) => (
                                             <AbsolutePositionedChild>
@@ -82,7 +42,7 @@ const Home = ({ images }) => {
     )
 }
 
-Home.defaultProps = {
+MWImagePage.defaultProps = {
     images: [
         'ace-youtil/ro-RO/lqvtnxzl3epkpvr8drkv',
         'ace-youtil/ro-RO/plmiq10gf3jvtkrgokuk',
@@ -91,4 +51,8 @@ Home.defaultProps = {
     ]
 }
 
-export default Home
+MWImagePage.propTypes = {
+    images: PropTypes.arrayOf(PropTypes.string).isRequired
+}
+
+export default MWImagePage
