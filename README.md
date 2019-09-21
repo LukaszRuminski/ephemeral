@@ -12,8 +12,8 @@ Opinionated kick starter for MW projects on Next.js framework. Consist of useful
 
 ## Getting Started
 1. Fill in placeholders in package.json
-    - `<author>`
-    - `<project_name>`
+    - `--author--`
+    - `--project_name--`
 1. Install [yarn](https://yarnpkg.com/en/) library
 1. Adjust REDME.md file according to your particular project
 1. You are ready to go!

@@ -1,8 +1,8 @@
 {
-    "name": "project-name",
+    "name": "--project_name--",
     "version": "0.0.1",
-    "author": "author",
-    "license": "UNLICENSED",
+    "author": "--author--",
+    "license": "unlicensed",
     "scripts": {
         "dev": "yarn check-quality && node server.js",
         "preview": "npm install yarn -g && yarn install && next build",
