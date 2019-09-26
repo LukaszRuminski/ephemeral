@@ -10,9 +10,6 @@ const images = [
 
 const MWImagePage = () => {
     return (
-        <p>Hey</p>
-    )
-    return (
         <MWImage images={images}/>
     )
 }

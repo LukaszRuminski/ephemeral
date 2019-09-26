@@ -4,7 +4,9 @@ const withImages = require('next-images')
 const nextConfig =
     withCSS(
         withImages(
-        //    Your configuration object
+            {
+                exportTrailingSlash: true
+            }
         )
     )
 

@@ -74,7 +74,7 @@
     semver "^5.4.1"
     source-map "^0.5.0"
 
-"@babel/generator@^7.4.0", "@babel/generator@^7.4.4", "@babel/generator@^7.6.0":
+"@babel/generator@^7.4.0", "@babel/generator@^7.6.0":
   version "7.6.0"
   resolved "https://pg-consumer.pkgs.visualstudio.com/_packaging/ModernWeb/npm/registry/@babel/generator/-/generator-7.6.0.tgz#e2c21efbfd3293ad819a2359b448f002bfdfda56"
   integrity sha1-4sIe+/0yk62BmiNZtEjwAr/f2lY=
@@ -84,6 +84,16 @@
     lodash "^4.17.13"
     source-map "^0.5.0"
     trim-right "^1.0.1"
+
+"@babel/generator@^7.4.4", "@babel/generator@^7.6.2":
+  version "7.6.2"
+  resolved "https://pg-consumer.pkgs.visualstudio.com/_packaging/ModernWeb/npm/registry/@babel/generator/-/generator-7.6.2.tgz#dac8a3c2df118334c2a29ff3446da1636a8f8c03"
+  integrity sha1-2sijwt8RgzTCop/zRG2hY2qPjAM=
+  dependencies:
+    "@babel/types" "^7.6.0"
+    jsesc "^2.5.1"
+    lodash "^4.17.13"
+    source-map "^0.5.0"
 
 "@babel/helper-annotate-as-pure@^7.0.0":
   version "7.0.0"
@@ -260,7 +270,16 @@
     "@babel/traverse" "^7.1.0"
     "@babel/types" "^7.2.0"
 
-"@babel/helpers@^7.4.4", "@babel/helpers@^7.6.0":
+"@babel/helpers@^7.4.4":
+  version "7.6.2"
+  resolved "https://pg-consumer.pkgs.visualstudio.com/_packaging/ModernWeb/npm/registry/@babel/helpers/-/helpers-7.6.2.tgz#681ffe489ea4dcc55f23ce469e58e59c1c045153"
+  integrity sha1-aB/+SJ6k3MVfI85GnljlnBwEUVM=
+  dependencies:
+    "@babel/template" "^7.6.0"
+    "@babel/traverse" "^7.6.2"
+    "@babel/types" "^7.6.0"
+
+"@babel/helpers@^7.6.0":
   version "7.6.0"
   resolved "https://pg-consumer.pkgs.visualstudio.com/_packaging/ModernWeb/npm/registry/@babel/helpers/-/helpers-7.6.0.tgz#21961d16c6a3c3ab597325c34c465c0887d31c6e"
   integrity sha1-IZYdFsajw6tZcyXDTEZcCIfTHG4=
@@ -278,10 +297,15 @@
     esutils "^2.0.2"
     js-tokens "^4.0.0"
 
-"@babel/parser@^7.0.0", "@babel/parser@^7.1.0", "@babel/parser@^7.4.3", "@babel/parser@^7.4.5", "@babel/parser@^7.6.0":
+"@babel/parser@^7.0.0", "@babel/parser@^7.1.0", "@babel/parser@^7.4.3", "@babel/parser@^7.6.0":
   version "7.6.0"
   resolved "https://pg-consumer.pkgs.visualstudio.com/_packaging/ModernWeb/npm/registry/@babel/parser/-/parser-7.6.0.tgz#3e05d0647432a8326cb28d0de03895ae5a57f39b"
   integrity sha1-PgXQZHQyqDJsso0N4DiVrlpX85s=
+
+"@babel/parser@^7.4.5", "@babel/parser@^7.6.2":
+  version "7.6.2"
+  resolved "https://pg-consumer.pkgs.visualstudio.com/_packaging/ModernWeb/npm/registry/@babel/parser/-/parser-7.6.2.tgz#205e9c95e16ba3b8b96090677a67c9d6075b70a1"
+  integrity sha1-IF6cleFro7i5YJBnemfJ1gdbcKE=
 
 "@babel/plugin-proposal-async-generator-functions@^7.2.0":
   version "7.2.0"
@@ -326,9 +350,9 @@
     "@babel/plugin-syntax-object-rest-spread" "^7.2.0"
 
 "@babel/plugin-proposal-object-rest-spread@^7.4.4":
-  version "7.5.5"
-  resolved "https://pg-consumer.pkgs.visualstudio.com/_packaging/ModernWeb/npm/registry/@babel/plugin-proposal-object-rest-spread/-/plugin-proposal-object-rest-spread-7.5.5.tgz#61939744f71ba76a3ae46b5eea18a54c16d22e58"
-  integrity sha1-YZOXRPcbp2o65Gte6hilTBbSLlg=
+  version "7.6.2"
+  resolved "https://pg-consumer.pkgs.visualstudio.com/_packaging/ModernWeb/npm/registry/@babel/plugin-proposal-object-rest-spread/-/plugin-proposal-object-rest-spread-7.6.2.tgz#8ffccc8f3a6545e9f78988b6bf4fe881b88e8096"
+  integrity sha1-j/zMjzplRen3iYi2v0/ogbiOgJY=
   dependencies:
     "@babel/helper-plugin-utils" "^7.0.0"
     "@babel/plugin-syntax-object-rest-spread" "^7.2.0"
@@ -350,13 +374,13 @@
     "@babel/plugin-syntax-optional-chaining" "^7.2.0"
 
 "@babel/plugin-proposal-unicode-property-regex@^7.4.4":
-  version "7.4.4"
-  resolved "https://pg-consumer.pkgs.visualstudio.com/_packaging/ModernWeb/npm/registry/@babel/plugin-proposal-unicode-property-regex/-/plugin-proposal-unicode-property-regex-7.4.4.tgz#501ffd9826c0b91da22690720722ac7cb1ca9c78"
-  integrity sha1-UB/9mCbAuR2iJpByByKsfLHKnHg=
+  version "7.6.2"
+  resolved "https://pg-consumer.pkgs.visualstudio.com/_packaging/ModernWeb/npm/registry/@babel/plugin-proposal-unicode-property-regex/-/plugin-proposal-unicode-property-regex-7.6.2.tgz#05413762894f41bfe42b9a5e80919bd575dcc802"
+  integrity sha1-BUE3YolPQb/kK5pegJGb1XXcyAI=
   dependencies:
     "@babel/helper-plugin-utils" "^7.0.0"
     "@babel/helper-regex" "^7.4.4"
-    regexpu-core "^4.5.4"
+    regexpu-core "^4.6.0"
 
 "@babel/plugin-syntax-async-generators@^7.2.0":
   version "7.2.0"
@@ -445,9 +469,9 @@
     "@babel/helper-plugin-utils" "^7.0.0"
 
 "@babel/plugin-transform-block-scoping@^7.4.4":
-  version "7.6.0"
-  resolved "https://pg-consumer.pkgs.visualstudio.com/_packaging/ModernWeb/npm/registry/@babel/plugin-transform-block-scoping/-/plugin-transform-block-scoping-7.6.0.tgz#c49e21228c4bbd4068a35667e6d951c75439b1dc"
-  integrity sha1-xJ4hIoxLvUBoo1Zn5tlRx1Q5sdw=
+  version "7.6.2"
+  resolved "https://pg-consumer.pkgs.visualstudio.com/_packaging/ModernWeb/npm/registry/@babel/plugin-transform-block-scoping/-/plugin-transform-block-scoping-7.6.2.tgz#96c33ab97a9ae500cc6f5b19e04a7e6553360a79"
+  integrity sha1-lsM6uXqa5QDMb1sZ4Ep+ZVM2Cnk=
   dependencies:
     "@babel/helper-plugin-utils" "^7.0.0"
     lodash "^4.17.13"
@@ -481,13 +505,13 @@
     "@babel/helper-plugin-utils" "^7.0.0"
 
 "@babel/plugin-transform-dotall-regex@^7.4.4":
-  version "7.4.4"
-  resolved "https://pg-consumer.pkgs.visualstudio.com/_packaging/ModernWeb/npm/registry/@babel/plugin-transform-dotall-regex/-/plugin-transform-dotall-regex-7.4.4.tgz#361a148bc951444312c69446d76ed1ea8e4450c3"
-  integrity sha1-NhoUi8lRREMSxpRG127R6o5EUMM=
+  version "7.6.2"
+  resolved "https://pg-consumer.pkgs.visualstudio.com/_packaging/ModernWeb/npm/registry/@babel/plugin-transform-dotall-regex/-/plugin-transform-dotall-regex-7.6.2.tgz#44abb948b88f0199a627024e1508acaf8dc9b2f9"
+  integrity sha1-RKu5SLiPAZmmJwJOFQisr43Jsvk=
   dependencies:
     "@babel/helper-plugin-utils" "^7.0.0"
     "@babel/helper-regex" "^7.4.4"
-    regexpu-core "^4.5.4"
+    regexpu-core "^4.6.0"
 
 "@babel/plugin-transform-duplicate-keys@^7.2.0":
   version "7.5.0"
@@ -579,11 +603,11 @@
     "@babel/helper-plugin-utils" "^7.0.0"
 
 "@babel/plugin-transform-named-capturing-groups-regex@^7.4.5":
-  version "7.6.0"
-  resolved "https://pg-consumer.pkgs.visualstudio.com/_packaging/ModernWeb/npm/registry/@babel/plugin-transform-named-capturing-groups-regex/-/plugin-transform-named-capturing-groups-regex-7.6.0.tgz#1e6e663097813bb4f53d42df0750cf28ad3bb3f1"
-  integrity sha1-Hm5mMJeBO7T1PULfB1DPKK07s/E=
+  version "7.6.2"
+  resolved "https://pg-consumer.pkgs.visualstudio.com/_packaging/ModernWeb/npm/registry/@babel/plugin-transform-named-capturing-groups-regex/-/plugin-transform-named-capturing-groups-regex-7.6.2.tgz#c1ca0bb84b94f385ca302c3932e870b0fb0e522b"
+  integrity sha1-wcoLuEuU84XKMCw5MuhwsPsOUis=
   dependencies:
-    regexp-tree "^0.1.13"
+    regexpu-core "^4.6.0"
 
 "@babel/plugin-transform-new-target@^7.4.4":
   version "7.4.4"
@@ -680,9 +704,9 @@
     "@babel/helper-plugin-utils" "^7.0.0"
 
 "@babel/plugin-transform-spread@^7.2.0":
-  version "7.2.2"
-  resolved "https://pg-consumer.pkgs.visualstudio.com/_packaging/ModernWeb/npm/registry/@babel/plugin-transform-spread/-/plugin-transform-spread-7.2.2.tgz#3103a9abe22f742b6d406ecd3cd49b774919b406"
-  integrity sha1-MQOpq+IvdCttQG7NPNSbd0kZtAY=
+  version "7.6.2"
+  resolved "https://pg-consumer.pkgs.visualstudio.com/_packaging/ModernWeb/npm/registry/@babel/plugin-transform-spread/-/plugin-transform-spread-7.6.2.tgz#fc77cf798b24b10c46e1b51b1b88c2bf661bb8dd"
+  integrity sha1-/HfPeYsksQxG4bUbG4jCv2YbuN0=
   dependencies:
     "@babel/helper-plugin-utils" "^7.0.0"
 
@@ -719,13 +743,13 @@
     "@babel/plugin-syntax-typescript" "^7.2.0"
 
 "@babel/plugin-transform-unicode-regex@^7.4.4":
-  version "7.4.4"
-  resolved "https://pg-consumer.pkgs.visualstudio.com/_packaging/ModernWeb/npm/registry/@babel/plugin-transform-unicode-regex/-/plugin-transform-unicode-regex-7.4.4.tgz#ab4634bb4f14d36728bf5978322b35587787970f"
-  integrity sha1-q0Y0u08U02cov1l4Mis1WHeHlw8=
+  version "7.6.2"
+  resolved "https://pg-consumer.pkgs.visualstudio.com/_packaging/ModernWeb/npm/registry/@babel/plugin-transform-unicode-regex/-/plugin-transform-unicode-regex-7.6.2.tgz#b692aad888a7e8d8b1b214be6b9dc03d5031f698"
+  integrity sha1-tpKq2Iin6NixshS+a53APVAx9pg=
   dependencies:
     "@babel/helper-plugin-utils" "^7.0.0"
     "@babel/helper-regex" "^7.4.4"
-    regexpu-core "^4.5.4"
+    regexpu-core "^4.6.0"
 
 "@babel/preset-env@7.4.5":
   version "7.4.5"
@@ -831,7 +855,7 @@
     "@babel/parser" "^7.6.0"
     "@babel/types" "^7.6.0"
 
-"@babel/traverse@^7.0.0", "@babel/traverse@^7.1.0", "@babel/traverse@^7.4.3", "@babel/traverse@^7.4.4", "@babel/traverse@^7.4.5", "@babel/traverse@^7.5.5", "@babel/traverse@^7.6.0":
+"@babel/traverse@^7.0.0", "@babel/traverse@^7.1.0", "@babel/traverse@^7.4.3", "@babel/traverse@^7.4.4", "@babel/traverse@^7.5.5", "@babel/traverse@^7.6.0":
   version "7.6.0"
   resolved "https://pg-consumer.pkgs.visualstudio.com/_packaging/ModernWeb/npm/registry/@babel/traverse/-/traverse-7.6.0.tgz#389391d510f79be7ce2ddd6717be66d3fed4b516"
   integrity sha1-OJOR1RD3m+fOLd1nF75m0/7UtRY=
@@ -841,6 +865,21 @@
     "@babel/helper-function-name" "^7.1.0"
     "@babel/helper-split-export-declaration" "^7.4.4"
     "@babel/parser" "^7.6.0"
+    "@babel/types" "^7.6.0"
+    debug "^4.1.0"
+    globals "^11.1.0"
+    lodash "^4.17.13"
+
+"@babel/traverse@^7.4.5", "@babel/traverse@^7.6.2":
+  version "7.6.2"
+  resolved "https://pg-consumer.pkgs.visualstudio.com/_packaging/ModernWeb/npm/registry/@babel/traverse/-/traverse-7.6.2.tgz#b0e2bfd401d339ce0e6c05690206d1e11502ce2c"
+  integrity sha1-sOK/1AHTOc4ObAVpAgbR4RUCziw=
+  dependencies:
+    "@babel/code-frame" "^7.5.5"
+    "@babel/generator" "^7.6.2"
+    "@babel/helper-function-name" "^7.1.0"
+    "@babel/helper-split-export-declaration" "^7.4.4"
+    "@babel/parser" "^7.6.2"
     "@babel/types" "^7.6.0"
     debug "^4.1.0"
     globals "^11.1.0"
@@ -5304,9 +5343,9 @@ mime-db@1.40.0:
   integrity sha1-plBX6ZjbCQ9zKmj2wnbTh9QSbDI=
 
 "mime-db@>= 1.40.0 < 2":
-  version "1.41.0"
-  resolved "https://pg-consumer.pkgs.visualstudio.com/_packaging/ModernWeb/npm/registry/mime-db/-/mime-db-1.41.0.tgz#9110408e1f6aa1b34aef51f2c9df3caddf46b6a0"
-  integrity sha1-kRBAjh9qobNK71Hyyd88rd9GtqA=
+  version "1.42.0"
+  resolved "https://pg-consumer.pkgs.visualstudio.com/_packaging/ModernWeb/npm/registry/mime-db/-/mime-db-1.42.0.tgz#3e252907b4c7adb906597b4b65636272cf9e7bac"
+  integrity sha1-PiUpB7THrbkGWXtLZWNics+ee6w=
 
 mime-types@^2.1.12, mime-types@~2.1.19, mime-types@~2.1.24:
   version "2.1.24"
@@ -6984,11 +7023,6 @@ regex-not@^1.0.0, regex-not@^1.0.2:
     extend-shallow "^3.0.2"
     safe-regex "^1.1.0"
 
-regexp-tree@^0.1.13:
-  version "0.1.13"
-  resolved "https://pg-consumer.pkgs.visualstudio.com/_packaging/ModernWeb/npm/registry/regexp-tree/-/regexp-tree-0.1.13.tgz#5b19ab9377edc68bc3679256840bb29afc158d7f"
-  integrity sha1-Wxmrk3ftxovDZ5JWhAuymvwVjX8=
-
 regexpp@^2.0.1:
   version "2.0.1"
   resolved "https://pg-consumer.pkgs.visualstudio.com/_packaging/ModernWeb/npm/registry/regexpp/-/regexpp-2.0.1.tgz#8d19d31cf632482b589049f8281f93dbcba4d07f"
@@ -7003,7 +7037,7 @@ regexpu-core@^1.0.0:
     regjsgen "^0.2.0"
     regjsparser "^0.1.4"
 
-regexpu-core@^4.5.4:
+regexpu-core@^4.6.0:
   version "4.6.0"
   resolved "https://pg-consumer.pkgs.visualstudio.com/_packaging/ModernWeb/npm/registry/regexpu-core/-/regexpu-core-4.6.0.tgz#2037c18b327cfce8a6fea2a4ec441f2432afb8b6"
   integrity sha1-IDfBizJ8/Oim/qKk7EQfJDKvuLY=
