@@ -10,7 +10,7 @@
         "export": "yarn build && next export",
         "start": "node server.js",
         "lint": "yarn lint:js",
-        "lint:js": "eslint \"./pages/**/*.js\"",
+        "lint:js": "eslint \"**/*.js\" --fix",
         "test": "jest --watch",
         "test:ci": "jest --passWithNoTests",
         "check-quality": "yarn test:ci && yarn lint"
