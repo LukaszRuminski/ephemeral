@@ -7,6 +7,7 @@ const nextConfig =
         withImages(
             {
                 exportTrailingSlash: true,
+                distDir: '../.next',
                 env: {
                     CF_SPACE_ID: process.env.CF_SPACE_ID,
                     CF_ENVIRONMENT: process.env.CF_ENVIRONMENT,
