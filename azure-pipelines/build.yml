@@ -1,7 +1,7 @@
 # Pipieline used for building NextJS applications by ACE team
 
 variables:
-  YARN_CACHE_FOLDER: $(Pipeline.Workspace)/.yarn
+  npm_config_cache: $(Pipeline.Workspace)/.npm
 
 trigger:
 - master

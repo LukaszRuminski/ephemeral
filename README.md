@@ -14,18 +14,17 @@ Opinionated kick starter for MW projects on Next.js framework. Consist of useful
 1. Fill in placeholders in package.json
     - `--author--`
     - `--project_name--`
-1. Install [yarn](https://yarnpkg.com/en/) library
 1. Adjust REDME.md file according to your particular project
 1. You are ready to go!
 
 ## Run
-1. Run `yarn`  to install dependencies
-1. Run `yarn dev`  to start the project
+1. Run `npm install`  to install dependencies
+1. Run `npm run dev`  to start the project
 1. Open `localhost:3000` to see the project website
 
 ## Roadmap
 - How to test using Jest?  (write, configure & run)
-- Yarn - audit, outdated tasks
+- Npm - audit, outdated tasks
 - Add web.config (using webpack loaders)
 - Release YAML configuration
 - Enviroment variables managment with dotenv lib

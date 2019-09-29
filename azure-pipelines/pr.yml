@@ -1,3 +1,6 @@
+variables:
+  npm_config_cache: $(Pipeline.Workspace)/.npm
+
 pr:
   - master
   paths:
@@ -5,12 +8,21 @@ pr:
       README.md
 
 steps:
-  - task: Yarn@3
-    displayName: 'Yarn install'
-    inputs:
-      Arguments: install
+  - task: CacheBeta@0
+  inputs:
+    key: npm | $(Agent.OS) | package-lock.json
+    path: $(npm_config_cache)
+  displayName: Cache npm
 
-  - task: Yarn@3
-    displayName: 'Yarn export'
-    inputs:
-      Arguments: export
+- task: Npm@1
+  inputs:
+    command: 'custom'
+    customCommand: 'npm ci'
+    customRegistry: useFeed
+    customFeed: 'e930196b-b800-4fa1-9199-26acc5ef6b00'
+
+- task: Npm@1
+  displayName: 'NPM export'
+  inputs:
+    command: 'custom'
+    customCommand: 'npm run export'

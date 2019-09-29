@@ -4,15 +4,15 @@
     "author": "--author--",
     "license": "unlicensed",
     "scripts": {
-        "dev": "yarn check-quality && node server.js",
-        "preview": "npm install yarn -g && yarn install && next build",
-        "export": "yarn check-quality && next build ./src && next export ./src -o ./out",
+        "dev": "npm run check-quality && node server.js",
+        "preview": "npm ci && next build",
+        "export": "npm run check-quality && next build ./src && next export ./src -o ./out",
         "start": "node server.js",
-        "lint": "yarn lint:js",
+        "lint": "npm run lint:js",
         "lint:js": "eslint \"**/*.js\" --fix",
         "test": "jest --watch",
         "test:ci": "jest --passWithNoTests",
-        "check-quality": "yarn test:ci && yarn lint"
+        "check-quality": "npm run test:ci && npm run lint"
     },
     "dependencies": {
         "@mw/image": "^1.0.5",
@@ -45,7 +45,7 @@
     },
     "husky": {
         "hooks": {
-            "pre-push": "yarn check-quality"
+            "pre-push": "npm run check-quality"
         }
     },
     "jest": {
