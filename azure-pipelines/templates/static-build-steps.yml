@@ -20,7 +20,7 @@ steps:
   - task: Npm@1
     inputs:
       command: 'custom'
-      customCommand: 'npm ci'
+      customCommand: 'ci'
       customRegistry: useFeed
       customFeed: 'e930196b-b800-4fa1-9199-26acc5ef6b00'
 
@@ -28,7 +28,7 @@ steps:
     displayName: 'NPM export'
     inputs:
       command: 'custom'
-      customCommand: 'npm run export'
+      customCommand: 'run export'
 
   # - task: DeleteFiles@1
   #   displayName: 'Delete web.config from static folder'
