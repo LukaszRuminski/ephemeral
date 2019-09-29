@@ -20,12 +20,12 @@ steps:
         $(Build.SourcesDirectory)/yarn.lock
       path: $(YARN_CACHE_FOLDER)
 
-  - script: yarn --frozen-lockfile
-
   - task: Yarn@3
     displayName: 'Yarn install'
     inputs:
-      Arguments: install
+      Arguments: install --frozen-lockfile
+      customRegistry: useFeed
+      customFeed: 'e930196b-b800-4fa1-9199-26acc5ef6b00'
 
   - task: Yarn@3
     displayName: 'Yarn export'
