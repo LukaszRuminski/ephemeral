@@ -21,8 +21,7 @@ steps:
     inputs:
       command: 'custom'
       customCommand: 'ci'
-      customRegistry: useFeed
-      customFeed: 'e930196b-b800-4fa1-9199-26acc5ef6b00'
+      verbose: false
 
   - task: Npm@1
     displayName: 'NPM export'
