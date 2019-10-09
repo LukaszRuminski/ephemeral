@@ -14,8 +14,14 @@ Opinionated kick starter for MW projects on Next.js framework. Consist of useful
 1. Fill in placeholders in package.json
     - `--author--`
     - `--project_name--`
+1. Create .env file with variables:
+    1. CF_DELIVERY_ACCESS_TOKEN={`Contentful delivery token`}
+    1. CF_SPACE_ID={`Contentful space id`}
+    1. CF_PERSONAL_ACCESS_TOKEN={`Contentful personal token`}
+1. Run `npm run migrate-content-types -- -s {your space id}`
+1. Run `npm run migrate-content`
 1. Adjust REDME.md file according to your particular project
-1. You are ready to go!
+1. Run `npm run dev` to launch the project in development SSR mode and start coding.
 
 ## Run
 1. Run `npm install`  to install dependencies
