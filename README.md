@@ -17,6 +17,7 @@ Opinionated kick starter for MW projects on Next.js framework. Consist of useful
 1. Create .env file with variables:
     1. CF_DELIVERY_ACCESS_TOKEN={`Contentful delivery token`}
     1. CF_SPACE_ID={`Contentful space id`}
+    1. CF_ENVIRONMENT=master
     1. CF_PERSONAL_ACCESS_TOKEN={`Contentful personal token`}
 1. Run `npm run migrate-content-types -- -s {your space id}`
 1. Run `npm run migrate-content`
