@@ -4,6 +4,8 @@
     "author": "--author--",
     "license": "unlicensed",
     "scripts": {
+        "migrate-content-types": "contentful login && contentful space migration ./config/migrations/content-types.migration.js -y",
+        "migrate-content": "node ./config/migrations/ui-label-entry.migration.js",
         "dev": "npm run check-quality && node server.js",
         "preview": "npm ci && next build",
         "export": "npm run check-quality && next build ./src && next export ./src -o ./out",
@@ -36,12 +38,15 @@
         "@babel/plugin-proposal-optional-chaining": "^7.2.0",
         "babel-eslint": "^10.0.2",
         "babel-plugin-styled-components": "^1.10.6",
+        "contentful-cli": "^1.1.1",
+        "contentful-management": "^5.11.2",
         "dotenv": "^8.1.0",
         "eslint": "^6.1.0",
         "eslint-plugin-jsx-a11y": "^6.2.3",
         "eslint-plugin-react": "^7.14.3",
         "husky": "^3.0.2",
-        "jest": "^24.8.0"
+        "jest": "^24.8.0",
+        "prettier": "^1.18.2"
     },
     "husky": {
         "hooks": {

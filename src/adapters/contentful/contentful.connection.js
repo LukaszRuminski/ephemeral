@@ -1,3 +1,4 @@
+require('dotenv').config()
 const fetch = require('node-fetch')
 const ApolloClient = require('apollo-client').ApolloClient
 const InMemoryCache = require('apollo-cache-inmemory').InMemoryCache
