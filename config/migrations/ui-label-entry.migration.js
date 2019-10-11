@@ -11,7 +11,10 @@ const main = (async () => {
     let globalLabels = await env.createEntry('labels', {
         fields: {
             name: {
-                'en-US': 'Global labels'
+                'en-US': 'Global'
+            },
+            id: {
+                'en-US': 'global'
             },
             labels: {
                 'en-US': { "title": "MW seed" }

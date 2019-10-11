@@ -12,8 +12,25 @@ module.exports = function (migration) {
         .name("Name")
         .type("Symbol")
         .localized(false)
-        .required(false)
-        .validations([])
+        .required(true)
+        .validations([
+            {
+                "unique": true
+            }
+        ])
+        .disabled(false)
+        .omitted(false)
+    labels
+        .createField("id")
+        .name("Id")
+        .type("Symbol")
+        .localized(false)
+        .required(true)
+        .validations([
+            {
+                "unique": true
+            }
+        ])
         .disabled(false)
         .omitted(false)
     labels
