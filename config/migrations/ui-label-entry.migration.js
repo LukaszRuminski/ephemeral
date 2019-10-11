@@ -8,7 +8,7 @@ const main = (async () => {
     const space = await client.getSpace(process.env.CF_SPACE_ID)
     const env = await space.getEnvironment('master')
 
-    let globalLabels = await env.createEntry('labels', {
+    let globalLabels = await env.createEntry('labelGroup', {
         fields: {
             name: {
                 'en-US': 'Global'
@@ -32,7 +32,7 @@ const main = (async () => {
             name: {
                 'en-US': 'All labels'
             },
-            labelsCollections: {
+            labelGroups: {
                 'en-US': [{
                     sys: {
                         type: 'Link',

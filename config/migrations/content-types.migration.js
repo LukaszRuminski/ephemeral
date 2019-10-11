@@ -1,9 +1,9 @@
 module.exports = function (migration) {
     const labels = migration
-        .createContentType("labels")
-        .name("Labels")
+        .createContentType("labelGroup")
+        .name("Label group")
         .description(
-            'Storing labels for a particular page or the whole website. The name should indicate for which page those labels are meant to. If labels are reused between multiple pages, name it "Global labels"'
+            'Storing group of labels for a particular page or the whole website. The name should indicate for which page those labels are meant to. If labels are reused between multiple pages, name it "Global"'
         )
         .displayField("name")
 
@@ -64,8 +64,8 @@ module.exports = function (migration) {
         .omitted(false)
 
     allLabels
-        .createField("labelsCollections")
-        .name("Labels collections")
+        .createField("labelGroups")
+        .name("Label groups")
         .type("Array")
         .localized(false)
         .required(true)
@@ -77,7 +77,7 @@ module.exports = function (migration) {
 
             validations: [
                 {
-                    linkContentType: ["labels"]
+                    linkContentType: ["labelGroup"]
                 }
             ],
 
@@ -87,7 +87,7 @@ module.exports = function (migration) {
     allLabels.changeFieldControl("name", "builtin", "singleLine", {})
 
     allLabels.changeFieldControl(
-        "labelsCollections",
+        "labelGroups",
         "builtin",
         "entryCardsEditor",
         {

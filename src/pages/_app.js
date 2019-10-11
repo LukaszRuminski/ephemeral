@@ -16,7 +16,7 @@ export default class MyApp extends App {
 
         return {
             pageProps,
-            labels: labels.data.labelsCollection.items[0].labels
+            labels: labels.data.labelGroupCollection.items[0].labels
         }
     }
 
