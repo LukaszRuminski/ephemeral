@@ -28,7 +28,7 @@ export default class MyApp extends App {
                 <Head>
                     <title>{labels.title}</title>
                 </Head>
-                <Component {...pageProps} />
+                <Component {...pageProps} globalLabels={labels} />
             </>
         )
     }

@@ -17,7 +17,10 @@ const main = (async () => {
                 'en-US': 'global'
             },
             labels: {
-                'en-US': { "title": "MW seed" }
+                'en-US': {
+                    "title": "MW seed",
+                    "welcomeText": "<h1>Hello Modern Web!</h1><p>This is a Modern Web seed project. You can fork it to start your new project.</p>"
+                }
             }
         }
     })
@@ -42,5 +45,7 @@ const main = (async () => {
     })
 
     await allLabels.publish()
+
+    console.info('Done!')
 })
 main()
