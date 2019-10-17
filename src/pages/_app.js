@@ -16,7 +16,7 @@ export default class MyApp extends App {
 
         return {
             pageProps,
-            labels: labels.data.labelsCollection.items[0].labels
+            labels: labels.data.labelGroupCollection.items[0].labels
         }
     }
 
@@ -28,7 +28,7 @@ export default class MyApp extends App {
                 <Head>
                     <title>{labels.title}</title>
                 </Head>
-                <Component {...pageProps} />
+                <Component {...pageProps} globalLabels={labels} />
             </>
         )
     }

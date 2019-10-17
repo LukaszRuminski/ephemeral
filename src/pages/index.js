@@ -1,9 +1,10 @@
 import React from 'react'
+import PropTypes from 'prop-types'
+import Markdown from 'react-markdown'
 
-const Home = () => {
+const Home = ({ globalLabels }) => {
     return <div>
-        <h1>Hello Modern Web!</h1>
-        <p>This is a Modern Web seed project. You can fork it to start your new project.</p>
+        <Markdown source={globalLabels.welcomeText} escapeHtml={false} />
 
         <h2>Pages</h2>
         <ul>
@@ -11,6 +12,12 @@ const Home = () => {
             <li><a href='mw-video'>Modern Video</a></li>
         </ul>
     </div>
+}
+
+Home.propTypes = {
+    globalLabels: PropTypes.shape({
+        welcomeText: PropTypes.string.isRequired
+    })
 }
 
 export default Home
