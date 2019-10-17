@@ -14,19 +14,18 @@ Opinionated kick starter for MW projects on Next.js framework. Consist of useful
 1. Fill in placeholders in package.json
     - `--author--`
     - `--project_name--`
-1. Create .env file with variables:
-    1. CF_DELIVERY_ACCESS_TOKEN={`Contentful delivery token`}
-    1. CF_SPACE_ID={`Contentful space id`}
-    1. CF_ENVIRONMENT=master
-    1. CF_PERSONAL_ACCESS_TOKEN={`Contentful personal token`}
-1. Run `npm run migrate-content-types -- -s {your space id}`
-1. Run `npm run migrate-content`
+1. Run `npm install`  to install dependencies
+1. Create Labels architecture in Contentful:
+    1. Ensure you have following variables in the .env file:
+        ```
+        CF_DELIVERY_ACCESS_TOKEN={`Contentful delivery token`}
+        CF_SPACE_ID={`Contentful space id`}
+        CF_ENVIRONMENT=master
+        CF_PERSONAL_ACCESS_TOKEN={`Contentful personal token`}
+        ```
+    1. Run `migrate-labels-architecture`
 1. Adjust REDME.md file according to your particular project
 1. Run `npm run dev` to launch the project in development SSR mode and start coding.
-
-## Run
-1. Run `npm install`  to install dependencies
-1. Run `npm run dev`  to start the project
 1. Open `localhost:3000` to see the project website
 
 ## Roadmap
@@ -34,7 +33,3 @@ Opinionated kick starter for MW projects on Next.js framework. Consist of useful
 - Npm - audit, outdated tasks
 - Add web.config (using webpack loaders)
 - Release YAML configuration
-- Enviroment variables managment with dotenv lib
-
-## Estimated saving
-Set up the project with all above features can take even up to 10 MD
