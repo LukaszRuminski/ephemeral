@@ -1,0 +1,46 @@
+parameters:
+  enviroment: ''
+  azureSubscription: ''
+  applicationVariableGroup: ''
+  azureAppServiceName: ''
+
+jobs:
+- deployment: SsrDeploy
+  pool:
+    vmImage: 'ubuntu-latest'
+
+  variables:
+    - name: WEBSITE_NODE_DEFAULT_VERSION
+      value: '10.15.2'
+    - group: ${{parameters.applicationVariableGroup}}
+
+  environment: '${{parameters.enviroment}}'
+  strategy:
+    runOnce:
+      deploy:
+        steps:
+          - download: current
+            artifact: ssr
+
+          - template: ../steps/install-azure-devops-cli-steps.yml
+
+          - bash: |
+              settings=$(az pipelines variable-group list| jq '.[] | select(.name | test("'"$groupName"'")) | .variables | keys | map("-"+.+" $("+.+")") | join(" ")')
+              settings="${settings%\"}"
+              settings="${settings#\"}"
+              settingsWithNode="$settings -WEBSITE_NODE_DEFAULT_VERSION $(WEBSITE_NODE_DEFAULT_VERSION)"
+              echo "##vso[task.setvariable variable=azureAppSettings]$settingsWithNode"
+              echo "[azureAppSettings] $settingsWithNode"
+            env:
+              groupName: ${{parameters.applicationVariableGroup}}
+            displayName: 'Generate AppSettings'
+
+          - task: AzureRmWebAppDeployment@4
+            inputs:
+              azureSubscription: '${{parameters.azureSubscription}}'
+              WebAppName: '${{parameters.azureAppServiceName}}'
+              packageForLinux: '$(Pipeline.Workspace)/ssr/*-ssr.zip'
+              ScriptType: 'Inline Script'
+              InlineScript: 'npm run preview'
+              WebConfigParameters: '-Handler iisnode -NodeStartFile server.js -appType node'
+              AppSettings: $(azureAppSettings)

@@ -1,0 +1,22 @@
+# For Azure Dev Ops PR trigger needs to be configured in GUI
+trigger: none
+
+# pr:
+#   branches:
+#     include:
+#     - master
+#   paths:
+#     exclude:
+#     - README.md
+
+stages:
+  - stage: VerifyPR
+    jobs:
+      - job: NextExport
+        variables:
+          - name: NPM_CONFIG_CACHE
+            value: $(Pipeline.Workspace)/.npm
+          - group: 'us.aceteam.tech - application - prod'
+
+        steps:
+          - template: templates/steps/run-next-export-steps.yml

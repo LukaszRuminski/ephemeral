@@ -1,0 +1,22 @@
+trigger: none
+
+variables:
+  NPM_CONFIG_CACHE: $(Pipeline.Workspace)/.npm
+
+stages:
+  - stage: StaticBuild
+    jobs:
+      - template: templates/job/static-build-job.yml
+        parameters:
+          artifactSuffix: 'sit'
+          applicationVariableGroup: '<domain> - application - sit'
+
+  - stage: DeployTest
+    dependsOn: StaticBuild
+    jobs:
+      - template: templates/job/static-deploy-job.yml
+        parameters:
+          artifactSuffix: 'sit'
+          environment: 'sit'
+          azureSubscription: '<azure subscription>'
+          azureAppService: '<azure app service>'
