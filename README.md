@@ -9,8 +9,8 @@ Opinionated kick starter for MW projects on Next.js framework. Consist of useful
     - Pull request verification job
 1. Recommended eslint configuration
 1. Definition of basic package.json tasks
-1. Prepush hook checking quality locally
-1. Configuration of MW privite npm
+1. Pre-push hook checking quality locally
+1. Configuration of MW private npm
 
 ## Getting Started
 1. Fill in placeholders in package.json
@@ -29,15 +29,15 @@ Opinionated kick starter for MW projects on Next.js framework. Consist of useful
 1. Run `npm run dev` to launch the project in development SSR mode and start coding.
 1. Open `localhost:3000` to see the project website
 1. Configure pipelines for your project following "Azure Pipelines" section
-1. Adjust REDME.md file
+1. Adjust README.md file
 
 ## Azure Pipelines
-The yaml configuration for Azure pipelines was build accoring to the best practices and Miscrosoft [schema reference](https://docs.microsoft.com/en-us/azure/devops/pipelines/yaml-schema?view=azure-devops&tabs=schema)
+The yaml configuration for Azure pipelines was build according to the best practices and Microsoft [schema reference](https://docs.microsoft.com/en-us/azure/devops/pipelines/yaml-schema?view=azure-devops&tabs=schema)
 
 There are 4 recommended environments:
-- `PREVIEW` - runs in server side mode, could serve content editors to preview  contentful changes live
-- `SIT` - stable static build that can be used to demo some feature/s to bussiness or PSAT scanning
-- `TEST` - static build that is updated with every merge to your develop/master branch. Used for acceptation the final bulid of your web applicatoin.
+- `PREVIEW` - runs in server side mode, could serve content editors to preview  Contentful changes live
+- `SIT` - stable static build that can be used to demo some feature/s to business or PSAT scanning
+- `TEST` - static build that is updated with every merge to your develop/master branch. Used for acceptation the final build of your web application.
 - `PROD`- production with Azure CDN in front
 
 ### File structure
@@ -52,7 +52,7 @@ There are 4 recommended environments:
 ### Adjusting pipelines templates
 Top level configuration
 - `azure-pipelines/sit.yml`
-    - `<domain> - application - prod`  - recomended name of the Azure Variable Group which is the set of variables needed to run your website, where `<domain>` is domain of you application e.g. "aceteam.tech - application - prod".
+    - `<domain> - application - prod`  - recommended name of the Azure Variable Group which is the set of variables needed to run your website, where `<domain>` is domain of you application e.g. "aceteam.tech - application - prod".
     - `<azure subscription>` - Indicates the place where you SIT webapp is located. In this cate it is the same as your Azure Resource Group e.g. "AZ-RG-CS-MW-ACE-NA-NonProd-01".
     - `<azure app service>` - Azure App Service name (Web App) e.g. "sit-aceteam-tech-en-us"
 -`azure-pipelines/prod.yml`.
