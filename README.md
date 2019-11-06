@@ -53,17 +53,32 @@ There are 4 recommended environments:
 Top level configuration
 - `azure-pipelines/sit.yml`
     - `<domain> - application - prod`  - recommended name of the Azure Variable Group which is the set of variables needed to run your website, where `<domain>` is domain of you application e.g. "aceteam.tech - application - prod".
-    - `<azure subscription>` - Indicates the place where you SIT webapp is located. In this cate it is the same as your Azure Resource Group e.g. "AZ-RG-CS-MW-ACE-NA-NonProd-01".
-    - `<azure app service>` - Azure App Service name (Web App) e.g. "sit-aceteam-tech-en-us"
+    - `<azure subscription>` - indicates location of your SIT webapp. In this case it is the same as your Azure Resource Group e.g. "AZ-RG-CS-MW-ACE-NA-NonProd-01".
+    - `<azure app service>` - SIT Azure App Service name (Web App) e.g. "sit-aceteam-tech-en-us"
 -`azure-pipelines/prod.yml`.
-    - `<azure subscription>` - Resource group for your PRODUCTION environment e.g. "AZ-RG-CS-MW-ACE-NA-Prod-01".
-    - `<azure app service>` - your production webapp name e.g. "aceteam-tech-en-us"
+    - `<azure subscription>` - Resource group of your PRODUCTION environment e.g. "AZ-RG-CS-MW-ACE-NA-Prod-01".
+    - `<azure app service>` - production webapp name e.g. "aceteam-tech-en-us"
 -`azure-pipelines/preview.yml`
-    - `<azure subscription>` - Your non prod Resource Group e.g. "AZ-RG-CS-MW-ACE-NA-NonProd-01".
-    - `<azure app service>` - Web App name e.g. "preview-aceteam-tech-en-us"
+    - `<azure subscription>` - non prod Resource Group e.g. "AZ-RG-CS-MW-ACE-NA-NonProd-01".
+    - `<azure app service>` - preview Web App name e.g. "preview-aceteam-tech-en-us"
 
 ### Azure Dev Ops setup
-TODO
+There are some tweaks and configurations that are NOT available in .yaml specification. This section describes what needs to be done via Azure DevOps GUI to make pipelines works as desired.
+
+#### Set up & rename all needed by you pipelines
+Pipelines -> New pipeline -> Azure Repos Git -> `your repository` -> Existing Azure Pipelines YAML file -> path to the top level pipeline file (e.g. sit.yml)
+
+By default Azure DevOps will create pipeline with the name of the project. In order to rename it, choose give pipeline form pipelines view, click tree dots from the top right corner and click 'Rename/move'.
+
+Repeat two above steps for all pipelines.
+
+### Manual approvals
+This functionality is configurable via Azure DevOps Environments. The names of your environments are defined on the top level pipeline configuration files (e.g sit.yml). They will be automatically created for if missing during deployment process.
+
+Got to Pipelines -> Environments -> name of your environment. From environment view you can create new environment if you would like to configure it before first run. Expand three dots from upper right corner of particular environments, click 'Checks' then 'Create' and then specify the Approvers for given environment. (Disclaimer: They need to have access to Azure DevOps and your project first)
+
+#### Configure branch policy
+Go to (Repos -> Branches -> Branch policies (for master/develop branch), under Build validation add build pipeline indicating `pr-verify.yml`. Choose 'Immediately when your branch is updated' as build expiration.
 
 ## Roadmap
 - How to test using Jest?  (write, configure & run)
