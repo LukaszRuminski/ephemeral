@@ -1,5 +1,5 @@
 trigger:
-- mester
+- master
 
 variables:
   NPM_CONFIG_CACHE: $(Pipeline.Workspace)/.npm
