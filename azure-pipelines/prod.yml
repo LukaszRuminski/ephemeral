@@ -33,6 +33,9 @@ stages:
           environment: 'prod'
           azureSubscription: '$(azureProdSubscription)'
           azureAppService: '$(azureProdAppService)'
+          azureAppServiceSlot: 'test'
+          azureCdnProfile: '<azure cdn profile name>'
+          azureCdnEndpoint: '<azure cdn endpoint name>'
 
   - stage: TagRelease
     dependsOn: PromoteToProd

@@ -1,14 +1,14 @@
 parameters:
   environment: ''
   azureSubscription: ''
-  deploymentVariableGroup: ''
-  # consist of: AZURE_RESOURCE_GROUP, AZURE_APPSERVICE, AZURE_SLOT, AZURE_CDN_ENDPOINT_NAME, AZURE_CDN_PROFILE
+  azureAppService: ''
+  azureAppServiceSlot: ''
+  azureCdnProfile: ''
+  azureCdnEndpoint: ''
 
 jobs:
   - deployment: SwapAndPurgeCdn
     environment: '${{parameters.environment}}'
-    variables:
-    - group: ${{parameters.deploymentVariableGroup}}
 
     strategy:
       runOnce:
@@ -19,12 +19,12 @@ jobs:
             inputs:
               azureSubscription: '${{parameters.azureSubscription}}'
               scriptLocation: inlineScript
-              inlineScript: 'az webapp deployment slot swap --slot "$(AZURE_SLOT)" --name "$(AZURE_APPSERVICE)" --resource-group "$(AZURE_RESOURCE_GROUP)"'
+              inlineScript: 'az webapp deployment slot swap --slot "${{azureAppServiceSlot}}" --name "${{azureAppService}}" --resource-group "${{azureSubscription}}"'
 
           - task: AzureCLI@1
             displayName: 'Purge CDN'
             inputs:
               azureSubscription: '${{parameters.azureSubscription}}'
               scriptLocation: inlineScript
-              inlineScript: 'az cdn endpoint purge -g "$(AZURE_RESOURCE_GROUP)" -n "${AZURE_CDN_ENDPOINT_NAME}" --profile-name "${AZURE_CDN_PROFILE}" --content-paths ''/*'''
+              inlineScript: 'az cdn endpoint purge -g "${{azureSubscription}}" -n "${{azureCdnEndpoint}}" --profile-name "${{azureCdnProfile}}" --content-paths ''/*'''
 
