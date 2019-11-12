@@ -11,7 +11,7 @@
         "start": "node server.js",
         "lint": "npm run lint:js",
         "lint:js": "eslint \"**/*.js\" --fix",
-        "test": "jest --watch",
+        "test": "jest --watchAll",
         "test:ci": "jest --passWithNoTests",
         "check-quality": "npm run test:ci && npm run lint"
     },
