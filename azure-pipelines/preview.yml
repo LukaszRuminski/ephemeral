@@ -14,7 +14,7 @@ stages:
     jobs:
       - template: templates/job/ssr-deploy-job.yml
         parameters:
-          enviroment: 'preview'
+          environment: 'preview'
           azureSubscription:  '<azure subscription>'
           applicationVariableGroup: '<domain> - application - prod'
           azureAppServiceName: '<azure app service>'

@@ -16,7 +16,7 @@ jobs:
 
             - task: AzureRmWebAppDeployment@4
               displayName: 'Deploy to WebApp'
-              condition: eq(parameters.azureAppServiceSlot, '')
+              condition: eq('${{parameters.azureAppServiceSlot}}', '')
               inputs:
                 azureSubscription: '${{parameters.azureSubscription}}'
                 WebAppName: '${{parameters.azureAppService}}'
@@ -25,10 +25,10 @@ jobs:
 
             - task: AzureRmWebAppDeployment@4
               displayName: 'Deploy to WebApp slot'
-              condition: ne(parameters.azureAppServiceSlot, '')
+              condition: ne('${{parameters.azureAppServiceSlot}}', '')
               inputs:
                 azureSubscription: '${{parameters.azureSubscription}}'
-                WebAppName: '$(${{parameters.azureAppService}})'
+                WebAppName: '${{parameters.azureAppService}}'
                 deployToSlotOrASE: true
                 ResourceGroupName: '${{parameters.azureSubscription}}'
                 SlotName: '${{parameters.azureAppServiceSlot}}'

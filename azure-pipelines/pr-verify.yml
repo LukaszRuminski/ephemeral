@@ -16,7 +16,7 @@ stages:
         variables:
           - name: NPM_CONFIG_CACHE
             value: $(Pipeline.Workspace)/.npm
-          - group: 'us.aceteam.tech - application - prod'
+          - group: '<domain> - application - prod'
 
         steps:
           - template: templates/steps/run-next-export-steps.yml

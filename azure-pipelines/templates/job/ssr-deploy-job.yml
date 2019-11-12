@@ -1,5 +1,5 @@
 parameters:
-  enviroment: ''
+  environment: ''
   azureSubscription: ''
   applicationVariableGroup: ''
   azureAppServiceName: ''
@@ -14,7 +14,7 @@ jobs:
       value: '10.15.2'
     - group: ${{parameters.applicationVariableGroup}}
 
-  environment: '${{parameters.enviroment}}'
+  environment: '${{parameters.environment}}'
   strategy:
     runOnce:
       deploy:
