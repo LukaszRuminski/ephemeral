@@ -1,0 +1,28 @@
+parameters:
+  artifactSuffix: ''
+  applicationVariableGroup: ''
+
+jobs:
+  - job: StaticBuild
+
+    variables:
+      - name: NPM_CONFIG_CACHE
+        value: npmConfigCache
+      - group: ${{parameters.applicationVariableGroup}}
+
+    steps:
+      - template: ../steps/run-next-export-steps.yml
+        parameters:
+          runCheckQuality: false
+
+      - task: DeleteFiles@1
+        displayName: 'Delete web.config from static folder'
+        inputs:
+          Contents: out/static/web.config
+        continueOnError: true
+
+      - template: ../steps/compress-and-publish-steps.yml
+        parameters:
+          inputFolderOrFile: '$(System.DefaultWorkingDirectory)/out'
+          compressedFileName:  '$(Build.BuildId)-static-${{parameters.artifactSuffix}}'
+          artifactName: 'static-${{parameters.artifactSuffix}}'

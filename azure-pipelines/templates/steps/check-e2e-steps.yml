@@ -1,0 +1,15 @@
+steps:
+  - task: Npm@1
+    displayName: 'Npm check-e2e:ci'
+    inputs:
+      command: 'custom'
+      customCommand: 'run check-e2e:ci'
+    continueOnError: true
+
+  - task: PublishTestResults@2
+    inputs:
+      testResultsFiles: junit.xml
+      mergeTestResults: true
+      failTaskOnFailedTests: true
+      testRunTitle: 'Jest End-to-End Tests'
+    displayName: 'Publish Jest test results'

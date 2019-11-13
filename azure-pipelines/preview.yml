@@ -1,0 +1,20 @@
+trigger:
+- master
+
+variables:
+  NPM_CONFIG_CACHE: $(Pipeline.Workspace)/.npm
+
+stages:
+  - stage: SsrBuild
+    jobs:
+      - template: templates/job/ssr-build-job.yml
+
+  - stage: SsrDeploy_Preview
+    dependsOn: SsrBuild
+    jobs:
+      - template: templates/job/ssr-deploy-job.yml
+        parameters:
+          environment: 'preview'
+          azureSubscription:  '<azure subscription>'
+          applicationVariableGroup: '<domain> - application - prod'
+          azureAppServiceName: '<azure app service>'

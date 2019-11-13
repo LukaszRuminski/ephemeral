@@ -1,0 +1,15 @@
+steps:
+  - task: Npm@1
+    displayName: 'Check Accessibility'
+    inputs:
+      command: 'custom'
+      customCommand: 'run a11y'
+    continueOnError: true
+
+  - task: PublishTestResults@2
+    inputs:
+      testResultsFiles: pa11y-junit.xml
+      mergeTestResults: true
+      failTaskOnFailedTests: true
+      testRunTitle: 'Accessibility Tests'
+    displayName: 'Publish Jest test results'

@@ -3,12 +3,14 @@ Opinionated kick starter for MW projects on Next.js framework. Consist of useful
 
 ## Features included
 1. Azure pipelines YAML configuration:
-    - Project builds  (ssr and static)
-    - Pull request verification job
+    - Preview (SSR) build & deployment
+    - Sit (static) build & deployment
+    - Production deployment with Web App slot swapping
+    - Pull request verification job which checks quality and runs static export
 1. Recommended eslint configuration
-1. Definition of basic package.json tasks
-1. Prepush hook checking quality locally
-1. ~~Simple webapp configuration (`web.config` file)~~
+1. Recommended npm scripts
+1. Pre-push hook checking quality locally
+1. Configuration of connection with private NPM prefixed by @mw
 
 ## Getting Started
 1. Fill in placeholders in package.json
@@ -24,12 +26,13 @@ Opinionated kick starter for MW projects on Next.js framework. Consist of useful
         CF_PERSONAL_ACCESS_TOKEN={`Contentful personal token`}
         ```
     1. Run `migrate-labels-architecture`
-1. Adjust REDME.md file according to your particular project
 1. Run `npm run dev` to launch the project in development SSR mode and start coding.
 1. Open `localhost:3000` to see the project website
+1. Setup CI/CD (see [Azure Pipelines](./docs/azure-pipelines.md))
+1. Adjust the README.md
 
 ## Roadmap
 - How to test using Jest?  (write, configure & run)
-- Npm - audit, outdated tasks
+- e2e tests
 - Add web.config (using webpack loaders)
-- Release YAML configuration
+- Rollback pipeline

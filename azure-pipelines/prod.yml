@@ -1,0 +1,46 @@
+trigger:
+- master
+
+variables:
+  NPM_CONFIG_CACHE: $(Pipeline.Workspace)/.npm
+  azureProdSubscription: '<azure subscription>'
+  azureProdAppService: '<azure app service>'
+
+stages:
+  - stage: StaticBuild
+    jobs:
+      - template: templates/job/static-build-job.yml
+        parameters:
+          artifactSuffix: 'prod'
+          applicationVariableGroup: 'domain - application - prod'
+
+  - stage: DeployTest
+    dependsOn: StaticBuild
+    jobs:
+      - template: templates/job/static-deploy-job.yml
+        parameters:
+          artifactSuffix: 'prod'
+          azureSubscription: '$(azureProdSubscription)'
+          environment: 'test'
+          azureAppService: '$(azureProdAppService)'
+          azureAppServiceSlot: 'test'
+
+  - stage: PromoteToProd
+    dependsOn: DeployTest
+    jobs:
+      - template: templates/job/swap-and-purge-cdn-job.yml
+        parameters:
+          environment: 'prod'
+          azureSubscription: '$(azureProdSubscription)'
+          azureAppService: '$(azureProdAppService)'
+          azureAppServiceSlot: 'test'
+          azureCdnProfile: '<azure cdn profile name>'
+          azureCdnEndpoint: '<azure cdn endpoint name>'
+
+  - stage: TagRelease
+    dependsOn: PromoteToProd
+    jobs:
+      - template: templates/job/git-tag-job.yml
+        parameters:
+          tagLabel: 'release/$(Build.BuildNumber)'
+          commit: '$(Build.SourceVersion)'
