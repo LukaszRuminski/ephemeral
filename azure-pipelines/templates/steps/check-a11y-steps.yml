@@ -3,7 +3,7 @@ steps:
     displayName: 'Check Accessibility'
     inputs:
       command: 'custom'
-      customCommand: 'run a11y'
+      customCommand: 'run check-a11y'
     continueOnError: true
 
   - task: PublishTestResults@2

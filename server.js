@@ -1,30 +1,55 @@
-// This file doesn't go through babel or webpack transformation.
-// Make sure the syntax and sources this file requires are compatible with the current node version you are running
-// See https://github.com/zeit/next.js/issues/1245 for discussions on Universal Webpack or universal Babel
-const { createServer } = require('http')
-const { parse } = require('url')
 const next = require('next')
+const path = require('path')
+const express = require("express")
+require('dotenv').config()
 
-const port = process.env.PORT || 3000
 const dev = process.env.NODE_ENV !== 'production'
-
-const app = next({ dev, dir: './src' })
+const { PORT, OUT_PATH } = process.env
+const app = next({dev})
 const handle = app.getRequestHandler()
+const server = express()
 
-app.prepare().then(() => {
-    createServer((req, res) => {
-    // Be sure to pass `true` as the second argument to `url.parse`.
-    // This tells it to parse the query portion of the URL.
-        const parsedUrl = parse(req.url, true)
-        const { pathname, query } = parsedUrl
+const ssrServer = () => {
+    app.prepare().then(() => {
 
-        if (pathname === '/a') {
-            app.render(req, res, '/', query)
-        } else {
-            handle(req, res, parsedUrl)
-        }
-    }).listen(port, err => {
-        if (err) throw err
-        console.info(`> Ready on port ${port}`)
+        server.use('/sitemap.xml', express.static(path.join(__dirname, 'public', 'static', 'sitemap.xml')));
+        server.use('/robots.txt', express.static(path.join(__dirname, 'config', 'robots', 'robots-preview.txt')));
+        server.use('/favicon.ico', express.static(path.join(__dirname, 'public', 'static', 'images', 'favicon.ico')));
+
+        server.get('*', (req, res) => {
+            return handle(req, res)
+        })
+
+        server.listen(PORT, (err) => {
+            if (err) throw err
+            // eslint-disable-next-line no-console
+            console.log('> Ready on http://localhost:%s', PORT)
+        })
     })
-})
+        .catch((ex) => {
+            console.error(ex.stack)
+            process.exit(1)
+        })
+}
+
+const staticServer = () => {
+
+    server.use(express.static(OUT_PATH))
+    server.use((req, res) => {
+        res.redirect('/404.html')
+    })
+
+    server.listen(PORT, function(){
+        // eslint-disable-next-line no-console
+        console.log("Static server started at http://localhost:%s", PORT)
+    })
+}
+
+let myArgs = process.argv.slice(2);
+
+if (myArgs[0] === '--static'){
+    staticServer()
+}
+else{
+    ssrServer()
+}

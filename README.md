@@ -8,6 +8,9 @@ Opinionated kick starter for MW projects on Next.js framework. Consist of useful
     - Production deployment with Web App slot swapping
     - Pull request verification job which checks quality and runs static export
 1. Recommended eslint configuration
+1. Recommended Unit tests configuration
+1. Recommended End-to-end tests configuration
+1. Recommended Accessibility tests configuration
 1. Recommended npm scripts
 1. Pre-push hook checking quality locally
 1. Configuration of connection with private NPM prefixed by @mw
@@ -29,10 +32,9 @@ Opinionated kick starter for MW projects on Next.js framework. Consist of useful
 1. Run `npm run dev` to launch the project in development SSR mode and start coding.
 1. Open `localhost:3000` to see the project website
 1. Setup CI/CD (see [Azure Pipelines](./docs/azure-pipelines.md))
+1. Setup tests (see [Tests](./docs/tests.md))
 1. Adjust the README.md
 
 ## Roadmap
-- How to test using Jest?  (write, configure & run)
-- e2e tests
 - Add web.config (using webpack loaders)
 - Rollback pipeline
