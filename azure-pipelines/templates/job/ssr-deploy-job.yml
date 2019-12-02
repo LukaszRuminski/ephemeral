@@ -28,7 +28,7 @@ jobs:
               settings=$(az pipelines variable-group list| jq '.[] | select(.name | test("'"$groupName"'")) | .variables | keys | map("-"+.+" $("+.+")") | join(" ")')
               settings="${settings%\"}"
               settings="${settings#\"}"
-              settingsWithNode="$settings -WEBSITE_NODE_DEFAULT_VERSION $(WEBSITE_NODE_DEFAULT_VERSION)"
+              settingsWithNode="$settings -WEBSITE_NODE_DEFAULT_VERSION $(WEBSITE_NODE_DEFAULT_VERSION) -NODE_ENV production"
               echo "##vso[task.setvariable variable=azureAppSettings]$settingsWithNode"
               echo "[azureAppSettings] $settingsWithNode"
             env:
@@ -36,6 +36,7 @@ jobs:
             displayName: 'Generate AppSettings'
 
           - task: AzureRmWebAppDeployment@4
+            displayName: 'Deploy to WebApp'
             inputs:
               azureSubscription: '${{parameters.azureSubscription}}'
               WebAppName: '${{parameters.azureAppServiceName}}'

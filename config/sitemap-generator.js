@@ -1,7 +1,7 @@
 require('dotenv').config()
 const { DOMAIN_URL, OUT_PATH } = process.env
 const fs = require('fs')
-const formatDate = require('./util/dateFormat.util')
+const formatDate = require('../src/helpers/dateFormat.helper')
 
 const getPathsObject = () => {
     const fileObj = {}
