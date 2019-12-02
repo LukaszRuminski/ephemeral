@@ -4,8 +4,8 @@ const express = require("express")
 require('dotenv').config()
 
 const dev = process.env.NODE_ENV !== 'production'
-const { PORT, OUT_PATH } = process.env
-const app = next({dev})
+const { PORT } = process.env
+const app = next({dev, dir: './src'})
 const handle = app.getRequestHandler()
 const server = express()
 
@@ -34,7 +34,7 @@ const ssrServer = () => {
 
 const staticServer = () => {
 
-    server.use(express.static(OUT_PATH))
+    server.use(express.static('/out'))
     server.use((req, res) => {
         res.redirect('/404.html')
     })
