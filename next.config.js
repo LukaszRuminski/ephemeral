@@ -1,11 +1,13 @@
 require('dotenv').config()
 const withCSS = require('@zeit/next-css')
 const withImages = require('next-images')
+const getRoutes = require('./config/routes')
 
 const nextConfig =
     withCSS(
         withImages(
             {
+                exportPathMap: getRoutes,
                 exportTrailingSlash: true,
                 distDir: '../.next',
                 env: {

@@ -1,3 +1,4 @@
+const formatDate = require('../src/helpers/dateFormat.helper')
 require('dotenv').config()
 const { DOMAIN_URL, OUT_PATH } = process.env
 const fs = require('fs')
