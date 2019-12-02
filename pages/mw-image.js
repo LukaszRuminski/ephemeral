@@ -1,5 +1,5 @@
 import React from 'react'
-import MWImage from '../components/mw-image'
+import MWImage from '../src/components/mw-image'
 
 const images = [
     'ace-youtil/ro-RO/lqvtnxzl3epkpvr8drkv',

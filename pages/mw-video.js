@@ -1,5 +1,5 @@
 import React from 'react'
-import MWVideo from '../components/mw-video'
+import MWVideo from '../src/components/mw-video'
 
 const videoId = 'ace-youtil/ro-RO/zfrqmsgzzsmsl4ussez8'
 

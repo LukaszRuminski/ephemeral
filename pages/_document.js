@@ -1,13 +1,20 @@
-import Document, { Head, Main, NextScript } from 'next/document'
+import Document, { Html, Head, Main, NextScript } from 'next/document'
 import React from 'react'
 
 export default class MyDocument extends Document {
+    static async getInitialProps(ctx) {
+        const initialProps = await Document.getInitialProps(ctx)
+        return { ...initialProps }
+    }
+
     render() {
         return (
-            <html lang={process.env.LANG}>
+            <Html lang={process.env.LANG}>
                 <Head>
-                    <link rel='shortcut icon' href='/static/images/favicon.ico' type='image/x-icon'/>
-                    <link rel='icon' href='/static/images/favicon.ico' type='image/x-icon'/>
+                    <link rel='shortcut icon' href='/static/images/favicon.ico' type='image/x-icon' />
+                    <link rel='icon' href='/static/images/favicon.ico' type='image/x-icon' />
+                    <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=IBM+Plex+Sans' />
+                    <link rel='canonical' href={process.env.DOMAIN_URL + this.props.url} />
 
                     <script dangerouslySetInnerHTML={{
                         __html: `var PGdataLayer = { 'GTM': {
@@ -40,10 +47,10 @@ export default class MyDocument extends Document {
                                 height='0' width='0' style='display:none;visibility:hidden'></iframe>`
                     }}>
                     </noscript>
-                    <Main/>
-                    <NextScript/>
+                    <Main />
+                    <NextScript />
                 </body>
-            </html>
+            </Html>
         )
     }
 }
