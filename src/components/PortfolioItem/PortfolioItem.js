@@ -5,17 +5,17 @@ import { PortfolioItemWrapper, Link, Content, Title, Image } from './PortfolioIt
 class PortfolioItem extends Component {
 
     render() {
-        const { item } = this.props
+        const { url, newimage, title, description } = this.props
 
         return (
             <PortfolioItemWrapper>
-                <Link href={item.url}>
-                    <Image src={item.newimage && item.newimage.fields.file.fields.file.url} alt={item.newimage && item.newimage.fields.altText}/>
+                <Link href={url}>
+                    <Image src={newimage && newimage.file.url} alt={newimage && newimage.altText} />
                 </Link>
                 <Content>
-                    <Title>{item.title}</Title>
-                    {item.description}
-                    <Link href={item.url}>{item.url}</Link>
+                    <Title>{title}</Title>
+                    {description}
+                    <Link href={url}>{url}</Link>
                 </Content>
             </PortfolioItemWrapper>
         )
@@ -23,16 +23,16 @@ class PortfolioItem extends Component {
 }
 
 PortfolioItem.propTypes = {
-    item: PropTypes.object
+    newimage: PropTypes.object.isRequired,
+    title: PropTypes.string,
+    description: PropTypes.string,
+    url: PropTypes.string,
 }
 
 PortfolioItem.defaultProps = {
-    item: {
-        image: '',
-        title: 'Portfolio Item Title',
-        description: 'Portfolio Item Description',
-        url: ''
-    },
+    title: 'Portfolio Item Title',
+    description: '',
+    url: ''
 }
 
 export default PortfolioItem

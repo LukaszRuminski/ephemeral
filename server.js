@@ -14,7 +14,6 @@ const ssrServer = () => {
 
         server.use('/sitemap.xml', express.static(path.join(__dirname, 'public', 'static', 'sitemap.xml')));
         server.use('/robots.txt', express.static(path.join(__dirname, 'config', 'robots', 'robots-preview.txt')));
-        server.use('/favicon.ico', express.static(path.join(__dirname, 'public', 'static', 'images', 'favicon.ico')));
 
         server.get('*', (req, res) => {
             return handle(req, res)
@@ -34,7 +33,7 @@ const ssrServer = () => {
 
 const staticServer = () => {
 
-    server.use(express.static('/out'))
+    server.use(express.static('out'))
     server.use((req, res) => {
         res.redirect('/404.html')
     })

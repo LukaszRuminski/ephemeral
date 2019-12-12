@@ -2,7 +2,7 @@ import App from 'next/app'
 import Head from 'next/head'
 import React from 'react'
 
-import { getGlobalLabels } from '../src/adapters/contentful/contentful.adapters'
+import { getGlobalLabels } from '../adapters/contentful/contentful.adapters'
 
 export default class MyApp extends App {
 

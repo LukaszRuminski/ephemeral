@@ -6,29 +6,29 @@ import { BlogPost, Body, Content, Details, Image, PostDate, ReadMore, Title } fr
 
 class BlogPostCard extends Component {
     render() {
-        const { blogPost } = this.props
+        const { sys, headlights, title, body, image, date } = this.props
         return (
             <BlogPost>
                 <Image
-                    imageUrl={blogPost.fields.image &&
-                    blogPost.fields.image.fields.url ||
-                    blogPost.fields.image.fields.file &&
-                    blogPost.fields.image.fields.file.fields.file.url ||
-                    'https://via.placeholder.com/600x400'}
-                    alt={blogPost.fields.image && blogPost.fields.image.fields.altText}
+                    imageUrl={image &&
+                        image.url ||
+                        image.file &&
+                        image.file.url ||
+                        'https://via.placeholder.com/600x400'}
+                    alt={image && image.altText}
                 />
                 <Content>
-                    <Title href={`/article/${blogPost.sys.id}`}>
-                        {blogPost.fields.title}
+                    <Title href={`/article/${sys.id}`}>
+                        {title}
                     </Title>
                     <Body>
-                        <Markdown source={blogPost.fields.headlights || trimPostLength(blogPost.fields.body)}
+                        <Markdown source={headlights || trimPostLength(body)}
                             escapeHtml={false}
                         />
                     </Body>
                     <Details>
-                        <PostDate>{formatDate(blogPost.fields.date)}</PostDate>
-                        <ReadMore href={`/article/${blogPost.sys.id}/${blogPost.sys.id}`}>
+                        <PostDate>{formatDate(date)}</PostDate>
+                        <ReadMore href={`/article/${sys.id}`}>
                             Read more
                         </ReadMore>
                     </Details>
@@ -39,25 +39,14 @@ class BlogPostCard extends Component {
 }
 
 BlogPostCard.propTypes = {
-    blogPost: PropTypes.shape({
-        sys: PropTypes.shape({
-            id: PropTypes.string.isRequired
-        }),
-        fields: PropTypes.shape({
-            image: PropTypes.object,
-            title: PropTypes.string,
-            headlights: PropTypes.string,
-            body: PropTypes.string,
-            date: PropTypes.string
-        })
-    })
-}
-
-BlogPostCard.defaultProps = {
-    imageUrl: '',
-    firstName: 'First name',
-    lastName: 'Last name',
-    description: 'Default description'
+    sys: PropTypes.shape({
+        id: PropTypes.string.isRequired
+    }),
+    image: PropTypes.object.isRequired,
+    title: PropTypes.string.isRequired,
+    headlights: PropTypes.string,
+    body: PropTypes.string,
+    date: PropTypes.string.isRequired
 }
 
 export default BlogPostCard

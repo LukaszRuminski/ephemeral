@@ -13,18 +13,25 @@ import {
 class TeamMembersCard extends Component {
 
     render() {
-        const { member } = this.props
+        const {
+            firstName,
+            lastName,
+            description,
+            imageUrl,
+            imageAltText
+        } = this.props
+
         return (
             <Card>
                 <MemberInfo>
-                    <MemberProfilePic src={`https://res.cloudinary.com/mwace/image/upload/w_90,q_auto,f_auto/${member.imageUrl}`} alt={member.imageAltText}/>
+                    <MemberProfilePic src={`https://res.cloudinary.com/mwace/image/upload/w_90,q_auto,f_auto/${imageUrl}`} alt={imageAltText} />
                     <MemberInfoText>
-                        <div>{member.firstName}</div>
-                        <div>{member.lastName}</div>
+                        <div>{firstName}</div>
+                        <div>{lastName}</div>
                     </MemberInfoText>
                 </MemberInfo>
                 <DescriptionWrapper>
-                    <Description><Markdown source={member.description} escapeHtml={false}/></Description>
+                    <Description><Markdown source={description} escapeHtml={false} /></Description>
                 </DescriptionWrapper>
             </Card>
         )
@@ -32,13 +39,11 @@ class TeamMembersCard extends Component {
 }
 
 TeamMembersCard.propTypes = {
-    member: PropTypes.shape({
-        imageUrl: PropTypes.string,
-        imageAltText: PropTypes.string,
-        firstName: PropTypes.string,
-        lastName: PropTypes.string,
-        description: PropTypes.string
-    })
+    imageUrl: PropTypes.string,
+    imageAltText: PropTypes.string,
+    firstName: PropTypes.string,
+    lastName: PropTypes.string,
+    description: PropTypes.string
 }
 
 TeamMembersCard.defaultProps = {

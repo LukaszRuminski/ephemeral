@@ -1,5 +1,6 @@
 import React, { Component, Fragment } from 'react'
 import { withRouter } from 'next/router'
+import routerConfig from 'Config/router.config'
 import PropTypes from 'prop-types'
 import {
     AceHeader,
@@ -37,12 +38,12 @@ class Header extends Component {
                     </AceBrandWrapper>
 
                     <AceMenu>
-                        <AceMenuLink href='/team' secondary={secondary}
-                            active={router.pathname === '/team'}>Team</AceMenuLink>
-                        <AceMenuLink href='/portfolio' secondary={secondary}
-                            active={router.pathname === '/portfolio'}>Portfolio</AceMenuLink>
-                        <AceMenuLink href='/blog' secondary={secondary}
-                            active={router.pathname === '/blog'}>Blog</AceMenuLink>
+                        <AceMenuLink href={routerConfig.team.slug} secondary={secondary}
+                            active={router.pathname === routerConfig.team.slug}>Team</AceMenuLink>
+                        <AceMenuLink href={routerConfig.portfolio.slug} secondary={secondary}
+                            active={router.pathname === routerConfig.portfolio.slug}>Portfolio</AceMenuLink>
+                        <AceMenuLink href={routerConfig.blog.slug} secondary={secondary}
+                            active={router.pathname === routerConfig.blog.slug}>Blog</AceMenuLink>
                     </AceMenu>
 
                     <AceMenuMobile>
@@ -61,13 +62,13 @@ class Header extends Component {
                                 onClick={() => {
                                     this.setState({ menuOpen: !menuOpen })
                                 }}/>
-                            <AceMenuLinkMobile href='/team' secondary={secondary}>
+                            <AceMenuLinkMobile href={routerConfig.team.slug} secondary={secondary}>
                                 Team
                             </AceMenuLinkMobile>
-                            <AceMenuLinkMobile href='/portfolio' secondary={secondary}>
+                            <AceMenuLinkMobile href={routerConfig.portfolio.slug} secondary={secondary}>
                                 Portfolio
                             </AceMenuLinkMobile>
-                            <AceMenuLinkMobile href='/blog' secondary={secondary}>
+                            <AceMenuLinkMobile href={routerConfig.blog.slug} secondary={secondary}>
                                 Blog
                             </AceMenuLinkMobile>
                         </AceHiddenMenu>

@@ -9,8 +9,8 @@ class TeamMembers extends Component{
         const { team } = this.props
 
         team.sort((a,b)=>{
-            if(a.fields.lastName.toLowerCase() < b.fields.lastName.toLowerCase()) return -1
-            if(a.fields.lastName.toLowerCase() > b.fields.lastName.toLowerCase()) return 1
+            if(a.lastName.toLowerCase() < b.lastName.toLowerCase()) return -1
+            if(a.lastName.toLowerCase() > b.lastName.toLowerCase()) return 1
             return 0
         })
 
@@ -19,7 +19,7 @@ class TeamMembers extends Component{
 
                 {team
                     .map(member => (
-                        <TeamMembersCard key={member.fields.id} member={member.fields}/>
+                        <TeamMembersCard key={member.sys.id} {...member}/>
                     ))}
 
             </TeamMembersWrapper>

@@ -1,7 +1,5 @@
 import React from 'react'
-import PropTypes from 'prop-types'
-import Markdown from 'react-markdown'
-import Layout from '../src/components/Layout/Layout'
+import Layout from 'Component/Layout/Layout'
 import styled from 'styled-components'
 
 const AceLogoWrapper = styled.div`
@@ -49,21 +47,18 @@ const BackgroundImage = styled.div`
   background-size: cover;
 `
 
-const Home = ({ globalLabels }) => {
-    return <Layout pageTitle={'ACE: Homepage'} withoutLogo secondary>
-        <BackgroundImage src={'http://res.cloudinary.com/mwace/video/upload/v1568033858/Aceteam.tech/Pexels_Videos_1564582.jpg'} />
-        <AceLogoWrapper>
-            <AceLogo src='/static/images/logo.png' alt={'ACE Card as a team logo'} />
-            <AceBrand>ACE TEAM</AceBrand>
-            <Markdown source={globalLabels.welcomeText} escapeHtml={false} />
-        </AceLogoWrapper>
-    </Layout>
+class Page extends React.Component {
+    render() {
+        return (
+            <Layout pageTitle={'ACE: Homepage'} withoutLogo secondary>
+                <BackgroundImage src={'http://res.cloudinary.com/mwace/video/upload/v1568033858/Aceteam.tech/Pexels_Videos_1564582.jpg'}/>
+                <AceLogoWrapper>
+                    <AceLogo src='/static/images/logo.png' alt={'ACE Card as a team logo'}/>
+                    <AceBrand>ACE TEAM</AceBrand>
+                </AceLogoWrapper>
+            </Layout>
+        )
+    }
 }
 
-Home.propTypes = {
-    globalLabels: PropTypes.shape({
-        welcomeText: PropTypes.string.isRequired
-    })
-}
-
-export default Home
+export default Page

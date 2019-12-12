@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /
+
+Disallow: /profile
+Disallow: /login
+Disallow: /reset-password
+
+Sitemap: https://aceteam.tech/sitemap.xml
