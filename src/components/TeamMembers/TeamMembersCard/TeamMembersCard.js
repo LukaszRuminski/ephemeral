@@ -17,19 +17,19 @@ const TeamMembersCard = ({
     imageUrl,
     imageAltText
 }) => (
-        <Card>
-            <MemberInfo>
-                <MemberProfilePic src={`https://res.cloudinary.com/mwace/image/upload/w_90,q_auto,f_auto/${imageUrl}`} alt={imageAltText} />
-                <MemberInfoText>
-                    <div>{firstName}</div>
-                    <div>{lastName}</div>
-                </MemberInfoText>
-            </MemberInfo>
-            <DescriptionWrapper>
-                <Description><Markdown source={description} escapeHtml={false} /></Description>
-            </DescriptionWrapper>
-        </Card>
-    )
+    <Card>
+        <MemberInfo>
+            <MemberProfilePic src={`https://res.cloudinary.com/mwace/image/upload/w_90,q_auto,f_auto/${imageUrl}`} alt={imageAltText} />
+            <MemberInfoText>
+                <div>{firstName}</div>
+                <div>{lastName}</div>
+            </MemberInfoText>
+        </MemberInfo>
+        <DescriptionWrapper>
+            <Description><Markdown source={description} escapeHtml={false} /></Description>
+        </DescriptionWrapper>
+    </Card>
+)
 
 TeamMembersCard.propTypes = {
     imageUrl: PropTypes.string,

@@ -21,8 +21,7 @@ const ssrServer = () => {
 
         server.listen(PORT, (err) => {
             if (err) throw err
-            // eslint-disable-next-line no-console
-            console.log('> Ready on http://localhost:%s', PORT)
+            console.info('> Ready on http://localhost:%s', PORT)
         })
     })
         .catch((ex) => {
