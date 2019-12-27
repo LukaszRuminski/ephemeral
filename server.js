@@ -39,8 +39,7 @@ const staticServer = () => {
     })
 
     server.listen(PORT, function(){
-        // eslint-disable-next-line no-console
-        console.log("Static server started at http://localhost:%s", PORT)
+        console.info("Static server started at http://localhost:%s", PORT)
     })
 }
 
