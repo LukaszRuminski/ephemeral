@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React from 'react'
 import PropTypes from 'prop-types'
 import Markdown from 'react-markdown'
 import {
@@ -10,33 +10,26 @@ import {
     DescriptionWrapper
 } from './TeamMembersCard.styles'
 
-class TeamMembersCard extends Component {
-
-    render() {
-        const {
-            firstName,
-            lastName,
-            description,
-            imageUrl,
-            imageAltText
-        } = this.props
-
-        return (
-            <Card>
-                <MemberInfo>
-                    <MemberProfilePic src={`https://res.cloudinary.com/mwace/image/upload/w_90,q_auto,f_auto/${imageUrl}`} alt={imageAltText} />
-                    <MemberInfoText>
-                        <div>{firstName}</div>
-                        <div>{lastName}</div>
-                    </MemberInfoText>
-                </MemberInfo>
-                <DescriptionWrapper>
-                    <Description><Markdown source={description} escapeHtml={false} /></Description>
-                </DescriptionWrapper>
-            </Card>
-        )
-    }
-}
+const TeamMembersCard = ({
+    firstName,
+    lastName,
+    description,
+    imageUrl,
+    imageAltText
+}) => (
+        <Card>
+            <MemberInfo>
+                <MemberProfilePic src={`https://res.cloudinary.com/mwace/image/upload/w_90,q_auto,f_auto/${imageUrl}`} alt={imageAltText} />
+                <MemberInfoText>
+                    <div>{firstName}</div>
+                    <div>{lastName}</div>
+                </MemberInfoText>
+            </MemberInfo>
+            <DescriptionWrapper>
+                <Description><Markdown source={description} escapeHtml={false} /></Description>
+            </DescriptionWrapper>
+        </Card>
+    )
 
 TeamMembersCard.propTypes = {
     imageUrl: PropTypes.string,
