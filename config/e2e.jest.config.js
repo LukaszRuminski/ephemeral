@@ -8,8 +8,8 @@ module.exports = {
     ],
     "verbose": true,
     "rootDir": "..",
-    "roots": ["<rootDir>","<rootDir>/e2e/"],
-    "testMatch": ["**/e2e/*.test.[jt]s?(x)"],
+    "roots": ["<rootDir>"],
+    "testMatch": ["**/*e2e.[jt]s?(x)"],
     "testPathIgnorePatterns": [
         "<rootDir>/.next/",
         "<rootDir>/out/",
