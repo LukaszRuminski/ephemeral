@@ -3,8 +3,8 @@ trigger:
 
 variables:
   NPM_CONFIG_CACHE: $(Pipeline.Workspace)/.npm
-  azureProdSubscription: '<azure subscription>'
-  azureProdAppService: '<azure app service>'
+  azureProdSubscription: 'AZ-RG-CS-MW-ACE-NA-Prod-01'
+  azureProdAppService: 'aceteam-tech-en-us'
 
 stages:
   - stage: StaticBuild
@@ -12,7 +12,7 @@ stages:
       - template: templates/job/static-build-job.yml
         parameters:
           artifactSuffix: 'prod'
-          applicationVariableGroup: 'domain - application - prod'
+          applicationVariableGroup: 'us.aceteam.tech - application - prod'
 
   - stage: DeployTest
     dependsOn: StaticBuild
@@ -34,8 +34,8 @@ stages:
           azureSubscription: '$(azureProdSubscription)'
           azureAppService: '$(azureProdAppService)'
           azureAppServiceSlot: 'test'
-          azureCdnProfile: '<azure cdn profile name>'
-          azureCdnEndpoint: '<azure cdn endpoint name>'
+          azureCdnProfile: 'aceteamtech-CDN'
+          azureCdnEndpoint: 'aceteamtech-en-us'
 
   - stage: TagRelease
     dependsOn: PromoteToProd

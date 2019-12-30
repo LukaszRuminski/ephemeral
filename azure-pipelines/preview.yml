@@ -15,6 +15,6 @@ stages:
       - template: templates/job/ssr-deploy-job.yml
         parameters:
           environment: 'preview'
-          azureSubscription:  '<azure subscription>'
-          applicationVariableGroup: '<domain> - application - prod'
-          azureAppServiceName: '<azure app service>'
+          azureSubscription:  'AZ-RG-CS-MW-ACE-NA-NonProd-01'
+          applicationVariableGroup: 'us.aceteam.tech - application - prod'
+          azureAppServiceName: 'preview-aceteam-tech-en-us'

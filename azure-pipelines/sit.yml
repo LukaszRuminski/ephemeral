@@ -9,7 +9,7 @@ stages:
       - template: templates/job/static-build-job.yml
         parameters:
           artifactSuffix: 'sit'
-          applicationVariableGroup: '<domain> - application - sit'
+          applicationVariableGroup: 'us.aceteam.tech - application - sit'
 
   - stage: DeployTest
     dependsOn: StaticBuild
@@ -18,5 +18,5 @@ stages:
         parameters:
           artifactSuffix: 'sit'
           environment: 'sit'
-          azureSubscription: '<azure subscription>'
-          azureAppService: '<azure app service>'
+          azureSubscription: 'AZ-RG-CS-MW-ACE-NA-NonProd-01'
+          azureAppService: 'sit-aceteam-tech-en-us'
