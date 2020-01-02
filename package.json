@@ -24,7 +24,7 @@
         "e2e:ci": "npm run e2e -- --ci --reporters=default --reporters=jest-junit",
         "check-e2e": "npm run serve; npm run e2e;",
         "check-e2e:ci": "npm run serve; npm run e2e:ci",
-        "check-a11y": "npm run serve; npm run pa11y; node config/pa11y-json-to-junit.js",
+        "check-a11y": "npm run serve; npm run a11y; node config/pa11y-json-to-junit.js",
         "a11y": "node config/pa11y-ci.js"
     },
     "dependencies": {
