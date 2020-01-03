@@ -28,8 +28,6 @@
         "a11y": "node config/pa11y-ci.js"
     },
     "dependencies": {
-        "@mw/image": "^1.0.5",
-        "@mw/video": "^1.0.7",
         "@zeit/next-css": "^1.0.1",
         "apollo-cache-inmemory": "^1.6.3",
         "apollo-client": "^2.6.4",
