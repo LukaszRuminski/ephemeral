@@ -24,7 +24,7 @@ class Team extends Component {
         const { teamMembers } = this.props
 
         return (
-            <Layout pageTitle={'ACE: Team'}>
+            <Layout pageTitle={'ACE: Team'} secondary>
                 <TeamsWrapper>
                     <H1 title={r.team.linkName} color={'#E61E32'}/>
                     <TeamMembers team={teamMembers}/>

@@ -30,7 +30,7 @@ class Blog extends React.Component {
 
         return (
             <Background>
-                <Layout pageTitle='Ace: Blog' secondary={true}>
+                <Layout pageTitle='Ace: Blog' secondary>
                     <BodyWrapper>
                         <H1 title={r.blog.linkName}/>
                         {

@@ -29,7 +29,7 @@ class Portfolio extends Component {
         const { portfolioItems } = this.props
 
         return (
-            <Layout pageTitle={'ACE: Portfolio'}>
+            <Layout pageTitle={'ACE: Portfolio'} secondary>
                 <PortfolioWrapper>
                     <H1 title={r.portfolio.linkName} color={'#E61E32'}/>
 
