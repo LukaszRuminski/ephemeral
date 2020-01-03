@@ -32,7 +32,7 @@ export default class MyDocument extends Document {
 
     render() {
         return (
-            <Html lang={process.env.LANG}>
+            <Html lang={process.env.SITE_LANG}>
                 <Head>
                     <link rel='shortcut icon preload' as='image' href='/favicon.ico' type='image/x-icon' />
                     <link rel='icon preload' as='image' href='/favicon.ico' type='image/x-icon' />
