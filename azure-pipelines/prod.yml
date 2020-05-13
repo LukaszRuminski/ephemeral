@@ -3,7 +3,7 @@ trigger:
 
 variables:
   NPM_CONFIG_CACHE: $(Pipeline.Workspace)/.npm
-  subscription: 'AZ-RG-CS-MW-ACE-NA-NonProd-01'
+  subscription: 'AZ-RG-CS-MW-ACE-NA-Sandbox-01'
   sppService: 'janrain-hosted-login-poc'
 
 stages:
@@ -23,4 +23,3 @@ stages:
           azureSubscription: '$(subscription)'
           environment: 'janrain'
           azureAppService: '$(sppService)'
-          azureAppServiceSlot: 'janrain'
