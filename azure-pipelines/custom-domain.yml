@@ -1,10 +1,10 @@
 trigger: none
 
 variables:
-  dnsZoneName: 'aceteam'
+  dnsZoneName: 'aceteam.tech'
   azureSubscription: 'AZ-RG-CS-MW-ACE-NA-Prod-01'
   cname: 'hosted-login'
-  azureAppAddress: 'https://janrain-hosted-login-poc.azurewebsites.net'
+  azureAppAddress: 'janrain-hosted-login-poc.azurewebsites.net'
 
 stages:
   - stage: CustomDomainCreatAssign
@@ -20,7 +20,7 @@ stages:
                 az network dns record-set cname create \
                 --name $(cname) \
                 --resource-group '$(azureSubscription)' \
-                --ttl 600 \
+                --ttl 60 \
                 --zone-name $(dnsZoneName)
 
           - task: AzureCLI@1
@@ -33,4 +33,5 @@ stages:
                   --cname '$(azureAppAddress)' \
                   --record-set-name $(cname) \
                   --resource-group '$(azureSubscription)' \
+                  --ttl 60 \
                   --zone-name $(dnsZoneName)
