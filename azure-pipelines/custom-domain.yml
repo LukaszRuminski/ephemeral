@@ -1,0 +1,36 @@
+trigger: none
+
+variables:
+  dnsZoneName: 'aceteam'
+  azureSubscription: 'AZ-RG-CS-MW-ACE-NA-Prod-01'
+  cname: 'hosted-login'
+  azureAppAddress: 'https://janrain-hosted-login-poc.azurewebsites.net'
+
+stages:
+  - stage: CustomDomainCreatAssign
+    jobs:
+      - job: CustomDomainCreatAssign
+        steps:
+          - task: AzureCLI@1
+            displayName: 'Create subdomain'
+            inputs:
+              azureSubscription: $(azureSubscription)
+              scriptLocation: inlineScript
+              inlineScript: |
+                az network dns record-set cname create \
+                --name $(cname) \
+                --resource-group '$(azureSubscription)' \
+                --ttl 600 \
+                --zone-name $(dnsZoneName)
+
+          - task: AzureCLI@1
+            displayName: 'Assign subdomain'
+            inputs:
+              azureSubscription: $(azureSubscription)
+              scriptLocation: inlineScript
+              inlineScript: |
+                az network dns record-set cname set-record \
+                  --cname '$(azureAppAddress)' \
+                  --record-set-name $(cname) \
+                  --resource-group '$(azureSubscription)' \
+                  --zone-name $(dnsZoneName)
