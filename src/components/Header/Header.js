@@ -44,6 +44,8 @@ class Header extends Component {
                             active={router.pathname === routerConfig.portfolio.slug}>Portfolio</AceMenuLink>
                         <AceMenuLink href={routerConfig.blog.slug} secondary={secondary}
                             active={router.pathname === routerConfig.blog.slug}>Blog</AceMenuLink>
+                        <AceMenuLink href={routerConfig.signin.slug} secondary={secondary}
+                            active={router.pathname === routerConfig.signin.slug}>SignIn</AceMenuLink>
                     </AceMenu>
 
                     <AceMenuMobile>
@@ -70,6 +72,9 @@ class Header extends Component {
                             </AceMenuLinkMobile>
                             <AceMenuLinkMobile href={routerConfig.blog.slug} secondary={secondary}>
                                 Blog
+                            </AceMenuLinkMobile>
+                            <AceMenuLinkMobile href={routerConfig.signin.slug} secondary={secondary}>
+                                SignIn
                             </AceMenuLinkMobile>
                         </AceHiddenMenu>
                     </AceMenuMobile>

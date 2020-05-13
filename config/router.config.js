@@ -13,6 +13,10 @@ module.exports = {
     },
     team: {
         linkName: 'Team',
-        slug: '/team'
+        slug: `/team`
+    },
+    signin: {
+        linkName: 'SignIn',
+        slug: '/sign-in'
     }
 }
