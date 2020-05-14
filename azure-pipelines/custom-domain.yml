@@ -12,6 +12,17 @@ stages:
       - job: CustomDomainCreatAssign
         steps:
           - task: AzureCLI@1
+            displayName: 'Delete subdomain'
+            inputs:
+              azureSubscription: $(azureSubscription)
+              scriptLocation: inlineScript
+              inlineScript: |
+                az network dns record-set cname delete \
+                --name $(cname) \
+                --resource-group '$(azureSubscription)' \
+                --zone-name $(dnsZoneName)
+
+          - task: AzureCLI@1
             displayName: 'Create subdomain'
             inputs:
               azureSubscription: $(azureSubscription)
