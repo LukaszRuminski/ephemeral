@@ -20,7 +20,8 @@ stages:
                 az network dns record-set cname delete \
                 --name $(cname) \
                 --resource-group $(azureSubscription) \
-                --zone-name $(dnsZoneName)
+                --zone-name $(dnsZoneName) \
+                --yes
 
           - task: AzureCLI@1
             displayName: 'Create subdomain'
