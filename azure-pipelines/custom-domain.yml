@@ -19,7 +19,7 @@ stages:
               inlineScript: |
                 az network dns record-set cname delete \
                 --name $(cname) \
-                --resource-group '$(azureSubscription)' \
+                --resource-group $(azureSubscription) \
                 --zone-name $(dnsZoneName)
 
           - task: AzureCLI@1
@@ -30,7 +30,7 @@ stages:
               inlineScript: |
                 az network dns record-set cname create \
                 --name $(cname) \
-                --resource-group '$(azureSubscription)' \
+                --resource-group $(azureSubscription) \
                 --ttl 60 \
                 --zone-name $(dnsZoneName)
 
@@ -41,8 +41,8 @@ stages:
               scriptLocation: inlineScript
               inlineScript: |
                 az network dns record-set cname set-record \
-                  --cname '$(azureAppAddress)' \
+                  --cname $(azureAppAddress) \
                   --record-set-name $(cname) \
-                  --resource-group '$(azureSubscription)' \
+                  --resource-group $(azureSubscription) \
                   --ttl 60 \
                   --zone-name $(dnsZoneName)
