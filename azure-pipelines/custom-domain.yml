@@ -43,6 +43,5 @@ stages:
                 az network dns record-set txt add-record \
                   --record-set-name 'asuid.$(cname)' \
                   --resource-group $(azureSubscription) \
-                  --value '0EA78F994347170E787D23F2FF0EA8FE68B6FCDB3FCAE90B185649D0102ED0D3'
-                  --ttl 60 \
+                  --value '0EA78F994347170E787D23F2FF0EA8FE68B6FCDB3FCAE90B185649D0102ED0D3' \
                   --zone-name $(dnsZoneName)
