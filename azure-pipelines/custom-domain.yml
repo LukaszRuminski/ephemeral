@@ -12,28 +12,21 @@ stages:
       - job: CustomDomainCreatAssign
         steps:
           - task: AzureCLI@1
-            displayName: 'Delete subdomain'
-            inputs:
-              azureSubscription: $(azureSubscription)
-              scriptLocation: inlineScript
-              inlineScript: |
-                az network dns record-set cname delete \
-                --name $(cname) \
-                --resource-group $(azureSubscription) \
-                --zone-name $(dnsZoneName) \
-                --yes
-
-          - task: AzureCLI@1
             displayName: 'Create subdomain'
             inputs:
               azureSubscription: $(azureSubscription)
               scriptLocation: inlineScript
               inlineScript: |
                 az network dns record-set cname create \
-                --name $(cname) \
-                --resource-group $(azureSubscription) \
-                --ttl 60 \
-                --zone-name $(dnsZoneName)
+                  --name $(cname) \
+                  --resource-group $(azureSubscription) \
+                  --ttl 60 \
+                  --zone-name $(dnsZoneName) &&
+                az network dns record-set txt create \
+                  --name 'asuid.$(cname)' \
+                  --resource-group $(azureSubscription) \
+                  --ttl 60 \
+                  --zone-name $(dnsZoneName)
 
           - task: AzureCLI@1
             displayName: 'Assign subdomain'
@@ -45,5 +38,11 @@ stages:
                   --cname $(azureAppAddress) \
                   --record-set-name $(cname) \
                   --resource-group $(azureSubscription) \
+                  --ttl 60 \
+                  --zone-name $(dnsZoneName) &&
+                az network dns record-set txt add-record \
+                  --record-set-name 'asuid.$(cname)' \
+                  --resource-group $(azureSubscription) \
+                  --value '0EA78F994347170E787D23F2FF0EA8FE68B6FCDB3FCAE90B185649D0102ED0D3'
                   --ttl 60 \
                   --zone-name $(dnsZoneName)
