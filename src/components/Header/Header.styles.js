@@ -87,6 +87,29 @@ export const AceMenuLink = styled.a`
   }
 `
 
+export const AceLoginLink = styled.a`
+  text-decoration: none;
+  cursor: pointer;
+  padding: 0 4px 0 4px;
+  color: ${props => props.active ? '#E61E32' : props.secondary ? '#fff' : '#000'};
+  background: ${props => props.active ? '#E61E32' : props.secondary ? 'rgba(0, 0, 0, 0.7)': 'rgba(255, 255, 255, 0.7)'};
+  font-size: 25px;
+  font-weight: bold;
+  line-height: 39px;
+  bottom: 10%;
+  position: absolute;
+
+  &:hover{
+    border-bottom: 3px solid #E61E32;
+    margin-bottom: -3px;
+  }
+
+  @media (min-width: 800px) {
+    position: relative;
+    margin-right: 45px;
+  }
+`
+
 export const AceMenuMobile = styled.div`
   display: none;
 

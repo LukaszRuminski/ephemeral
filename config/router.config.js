@@ -18,5 +18,9 @@ module.exports = {
     signin: {
         linkName: 'SignIn',
         slug: '/sign-in'
+    },
+    profile: {
+        linkName: 'Profile',
+        slug: '/profile'
     }
 }

@@ -10,6 +10,7 @@ import {
     AceBrandName,
     AceMenu,
     AceMenuLink,
+    AceLoginLink,
     AceMenuMobile,
     AceHiddenMenu,
     AceIconClose,
@@ -17,13 +18,25 @@ import {
     AceMenuLinkMobile
 } from './Header.styles'
 
+import { AuthContext } from '../../auth/authContext'
+
 class Header extends Component {
+    static contextType = AuthContext
 
     state = {
         menuOpen: false
     }
 
+    showLoginLogout = () => {
+        console.info('context', this.context)
+        const { isAuthenticated, startLogout, startAuthentication } = this.context
+        return isAuthenticated() ?
+            <AceLoginLink onClick={startLogout.bind(this.context)} >Logout</AceLoginLink> :
+            <AceLoginLink onClick={startAuthentication.bind(this.context)} >Login</AceLoginLink>
+    }
+
     render() {
+        const { isAuthenticated } = this.context
         const { secondary, router, withoutLogo } = this.props
         const { menuOpen } = this.state
 
@@ -44,8 +57,9 @@ class Header extends Component {
                             active={router.pathname === routerConfig.portfolio.slug}>Portfolio</AceMenuLink>
                         <AceMenuLink href={routerConfig.blog.slug} secondary={secondary}
                             active={router.pathname === routerConfig.blog.slug}>Blog</AceMenuLink>
-                        <AceMenuLink href={routerConfig.signin.slug} secondary={secondary}
-                            active={router.pathname === routerConfig.signin.slug}>SignIn</AceMenuLink>
+                        {isAuthenticated() && <AceMenuLink href={routerConfig.profile.slug} secondary={secondary}
+                            active={router.pathname === routerConfig.profile.slug}>Profile</AceMenuLink>}
+                        {this.showLoginLogout()}
                     </AceMenu>
 
                     <AceMenuMobile>
@@ -73,9 +87,9 @@ class Header extends Component {
                             <AceMenuLinkMobile href={routerConfig.blog.slug} secondary={secondary}>
                                 Blog
                             </AceMenuLinkMobile>
-                            <AceMenuLinkMobile href={routerConfig.signin.slug} secondary={secondary}>
-                                SignIn
-                            </AceMenuLinkMobile>
+                            {isAuthenticated() && <AceMenuLinkMobile href={routerConfig.profile.slug} secondary={secondary}>
+                                Profile</AceMenuLinkMobile>}
+                            {this.showLoginLogout()}
                         </AceHiddenMenu>
                     </AceMenuMobile>
 
