@@ -18,8 +18,10 @@ export class AuthProvider extends Component {
     constructor(props) {
         super(props);
         this.authService = new AuthService(oidcSettings);
+        this.isAuthenticated = this.authService.isAuthenticated()
     }
+
     render() {
-        return <AuthContext.Provider value={this.authService}>{this.props.children}</AuthContext.Provider>;
+        return <AuthContext.Provider value={{authenticated: this.isAuthenticated, ...this.authService}}>{this.props.children}</AuthContext.Provider>;
     }
 }

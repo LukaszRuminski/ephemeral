@@ -40,8 +40,8 @@ class Profile extends Component {
     }
 
     async componentDidMount () {
-        const { isAuthenticated, getUser } = this.context
-        if (isAuthenticated()) {
+        const { authenticated, getUser } = this.context
+        if (authenticated) {
             const user = await getUser()
             this.setState({ profile: user.profile, isProfileAvailable: true })
         }
@@ -63,12 +63,12 @@ class Profile extends Component {
     }
 
     render() {
-        const { isAuthenticated } = this.context
+        const { authenticated } = this.context
         const { isProfileAvailable } = this.state
 
         return (
             <>
-                {isAuthenticated() ? isProfileAvailable &&
+                {authenticated? isProfileAvailable &&
                 <Layout pageTitle={'ACE: Profile'} secondary>
                     <ProfileWrapper><H1 title={'Profile Page'}/>{this.renderUserInfo()}</ProfileWrapper>
                 </Layout> : <Unauthorized/>

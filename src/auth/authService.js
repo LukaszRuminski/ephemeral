@@ -17,33 +17,45 @@ export class AuthService {
             }
         })
 
-        this.manager.events.addUserSessionChanged(() => console.log('session'))
-
         this.manager.events.addAccessTokenExpired(() => {
             console.log("token expired");
             this.startLogout();
         })
 
         Log.logger = console;
-        Log.level = Log.DEBUG;
+        Log.level = Log.ERROR;
     }
 
     getUser = async () => {
         const user = await this.manager.getUser();
 
         if (!user) {
-            return  this.manager.signinRedirectCallback();
+            console.info('Please log in')
+            return false
         }
         await this.manager.storeUser(user);
 
-        return  await user
+        return user
     }
 
 
     isAuthenticated = () => {
         const oidcStorage = JSON.parse(sessionStorage.getItem(`oidc.user:${oidcSettings.authority}:${oidcSettings.client_id}`))
 
-        return (!!oidcStorage && !!oidcStorage.access_token)
+        const valid = !!oidcStorage && this.validateUser(oidcStorage)
+
+        return (!!valid && !!oidcStorage.access_token)
+
+    }
+
+    validateUser = (user) =>  {
+        const url = process.env.PROVIDER + "/profiles/oidc/userinfo"
+
+        return fetch(url, {
+            headers: {
+                'Authorization': "Bearer " + user.access_token
+            }
+        }).then(res => !!res)
     }
 
     createAuthenticationRequest = () => {
@@ -55,17 +67,20 @@ export class AuthService {
         return this.manager.signinRedirect()
     }
 
-    completeAuthentication= () => {
+    completeAuthentication = () => {
         this.manager.signinRedirectCallback()
-            .then(() => this.getUser())
-            .catch((error) => this.handleError(error));
+            .then(() =>  this.getUser())
+            .catch((error) => {
+                this.navigateToScreen();
+                this.handleError(error)
+        })
     }
 
     createLogoutRequest = () => {
         return this.manager.createSignoutRequest();
     }
 
-    startLogout() {
+    startLogout = () => {
         this.manager.clearStaleState()
             .then(() => {
                 sessionStorage.clear();
