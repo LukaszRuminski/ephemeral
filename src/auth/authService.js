@@ -41,18 +41,19 @@ class AuthService {
     isAuthenticated = () => {
         const oidcStorage = JSON.parse(sessionStorage.getItem(`oidc.user:${oidcSettings.authority}:${oidcSettings.client_id}`))
 
-        const valid = !!oidcStorage && this.validateUser(oidcStorage)
+        const valid = !!oidcStorage && this.callEndpoint("/profiles/oidc/userinfo")
 
         return (!!valid && !!oidcStorage.access_token)
 
     }
 
-    validateUser = (user) =>  {
-        const url = process.env.PROVIDER + "/profiles/oidc/userinfo"
+    callEndpoint = (endpoint) =>  {
+        const oidcStorage = JSON.parse(sessionStorage.getItem(`oidc.user:${oidcSettings.authority}:${oidcSettings.client_id}`))
+        const url = process.env.PROVIDER + endpoint
 
         return fetch(url, {
             headers: {
-                'Authorization': "Bearer " + user.access_token
+                'Authorization': "Bearer " + oidcStorage.access_token
             }
         }).then(res => !!res)
     }
@@ -82,12 +83,14 @@ class AuthService {
     }
 
     startLogout = () => {
-        this.manager.clearStaleState()
+        this.callEndpoint("/login/token/revoke")
+            .then(() => this.manager.clearStaleState()
             .then(() => {
                 sessionStorage.clear();
                 window.location.replace(oidcSettings.post_logout_redirect_uri)
             })
-            .catch((error) => this.handleError(error));
+            .catch((error) => this.handleError(error))
+            )
     }
 
     navigateToScreen = () => {
