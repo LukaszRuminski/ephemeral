@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import {AuthService} from './authService'
+import AuthService from './authService'
 import {oidcSettings} from './oidcSettings'
 
 export const AuthContext = React.createContext({

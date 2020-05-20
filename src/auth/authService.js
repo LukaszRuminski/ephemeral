@@ -1,7 +1,7 @@
 import {Log, UserManager, WebStorageStateStore} from 'oidc-client'
 import {oidcSettings} from './oidcSettings'
 
-export class AuthService {
+class AuthService {
     manager
 
     constructor(settings){
@@ -27,11 +27,10 @@ export class AuthService {
     }
 
     getUser = async () => {
-        const user = await this.manager.getUser();
+        const user = await this.manager.getUser()
 
         if (!user) {
-            console.info('Please log in')
-            return false
+            return this.manager.signinRedirectCallback()
         }
         await this.manager.storeUser(user);
 
@@ -69,7 +68,9 @@ export class AuthService {
 
     completeAuthentication = () => {
         this.manager.signinRedirectCallback()
-            .then(() =>  this.getUser())
+            .then(() => {
+                return this.getUser()
+            })
             .catch((error) => {
                 this.navigateToScreen();
                 this.handleError(error)
@@ -98,3 +99,5 @@ export class AuthService {
     }
 
 }
+
+export default AuthService
