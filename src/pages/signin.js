@@ -1,24 +1,17 @@
-import React, { Component } from 'react'
-import Layout from 'Component/Layout/Layout'
-import H1 from 'Component/H1/H1'
-import styled from 'styled-components'
-
-const SignInWrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-`
+import { Component } from 'react'
+import { AuthContext } from '../auth/authContext'
 
 class SignIn extends Component {
 
+    static contextType = AuthContext
+
+    componentDidMount() {
+        const { completeAuthentication } = this.context
+        completeAuthentication()
+    }
+
     render() {
-
-        return (
-            <Layout pageTitle={'ACE: SignIn'} secondary>
-                <SignInWrapper><H1 title={'SignIn Page'}/></SignInWrapper>
-            </Layout>
-        )
-
+        return null
     }
 }
 

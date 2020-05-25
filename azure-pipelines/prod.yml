@@ -12,7 +12,7 @@ stages:
       - template: templates/job/static-build-job.yml
         parameters:
           artifactSuffix: 'janrain'
-          applicationVariableGroup: 'us.aceteam.tech - application - prod'
+          applicationVariableGroup: 'hosted-login.aceteam.tech - application - prod'
 
   - stage: DeployJanrain
     dependsOn: StaticBuild

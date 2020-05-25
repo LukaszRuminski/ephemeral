@@ -16,6 +16,7 @@ module.exports = async () => {
         [Router.team.slug]: { page: '/team' },
         [Router.portfolio.slug]: { page: '/portfolio' },
         [Router.signin.slug]: { page: '/signin' },
+        [Router.profile.slug]: { page: '/profile' },
         ...articlePages
     }
 }

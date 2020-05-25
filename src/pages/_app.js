@@ -4,6 +4,8 @@ import React from 'react'
 
 import { getGlobalLabels } from '../adapters/contentful/contentful.adapters'
 
+import { AuthProvider } from '../auth/authContext'
+
 export default class MyApp extends App {
 
     static async getInitialProps({ Component, ctx }) {
@@ -20,15 +22,29 @@ export default class MyApp extends App {
         }
     }
 
+    constructor(props) {
+        super(props)
+        this.state = {
+            isOidcReady: false
+        }
+    }
+
+    componentDidMount = () => {
+        this.setState({ isOidcReady: true })
+    }
+
     render() {
         const { Component, pageProps, labels } = this.props
+        const { isOidcReady } = this.state
 
         return (
-            <>
+            isOidcReady && <>
                 <Head>
                     <title>{labels.title}</title>
                 </Head>
-                <Component {...pageProps} globalLabels={labels} />
+                <AuthProvider>
+                    <Component {...pageProps} globalLabels={labels} />
+                </AuthProvider>
             </>
         )
     }
