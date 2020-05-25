@@ -83,7 +83,7 @@ class AuthService {
     }
 
     startLogout = () => {
-        this.callEndpoint("/login/token/revoke")
+        this.callEndpoint(`/auth-ui/logout?client_id=${process.env.CLIENT_ID}&aic_spa=true`)
             .then(() => this.manager.clearStaleState()
             .then(() => {
                 sessionStorage.clear();
