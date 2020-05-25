@@ -30,8 +30,7 @@ export default class MyApp extends App {
     }
 
     componentDidMount = () => {
-        const ready = typeof Window !== "undefined"
-        this.setState({ isOidcReady: ready })
+        this.setState({ isOidcReady: true })
     }
 
     render() {

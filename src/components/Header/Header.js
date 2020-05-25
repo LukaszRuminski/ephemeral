@@ -28,7 +28,6 @@ class Header extends Component {
     }
 
     showLoginLogout = () => {
-        console.info('context', this.context)
         const { authenticated, startLogout, startAuthentication } = this.context
         return authenticated ?
             <AceLoginLink onClick={startLogout.bind(this.context)} >Logout</AceLoginLink> :

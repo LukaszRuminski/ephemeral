@@ -1,7 +1,6 @@
 import { Component } from 'react'
 import { AuthContext } from '../auth/authContext'
 
-
 class SignIn extends Component {
 
     static contextType = AuthContext

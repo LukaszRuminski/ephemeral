@@ -2,7 +2,6 @@ import {Log, UserManager, WebStorageStateStore} from 'oidc-client'
 import {oidcSettings} from './oidcSettings'
 
 class AuthService {
-    manager
 
     constructor(settings){
         this.settings = settings
@@ -83,14 +82,13 @@ class AuthService {
     }
 
     startLogout = () => {
-        this.callEndpoint(`/auth-ui/logout?client_id=${process.env.CLIENT_ID}&aic_spa=true`)
-            .then(() => this.manager.clearStaleState()
+        this.manager.clearStaleState()
             .then(() => {
+                window.open(process.env.PROVIDER + '/auth-ui/logout?client_id=' + process.env.CLIENT_ID, "logoutWindow")
                 sessionStorage.clear();
                 window.location.replace(oidcSettings.post_logout_redirect_uri)
             })
             .catch((error) => this.handleError(error))
-            )
     }
 
     navigateToScreen = () => {
