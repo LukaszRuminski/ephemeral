@@ -4,22 +4,22 @@ trigger:
 variables:
   NPM_CONFIG_CACHE: $(Pipeline.Workspace)/.npm
   subscription: 'AZ-RG-CS-MW-ACE-NA-Sandbox-01'
-  sppService: 'janrain-hosted-login-poc'
+  sppService: 'akamai-hosted-login-poc'
 
 stages:
   - stage: StaticBuild
     jobs:
       - template: templates/job/static-build-job.yml
         parameters:
-          artifactSuffix: 'janrain'
+          artifactSuffix: 'akamai'
           applicationVariableGroup: 'hosted-login.aceteam.tech - application - prod'
 
-  - stage: DeployJanrain
+  - stage: DeployAkamai
     dependsOn: StaticBuild
     jobs:
       - template: templates/job/static-deploy-job.yml
         parameters:
-          artifactSuffix: 'janrain'
+          artifactSuffix: 'akamai'
           azureSubscription: '$(subscription)'
-          environment: 'janrain'
+          environment: 'akamai'
           azureAppService: '$(sppService)'
