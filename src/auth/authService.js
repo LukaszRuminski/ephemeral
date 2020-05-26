@@ -82,11 +82,11 @@ class AuthService {
     }
 
     startLogout = () => {
+        const post_logout_redirect_uri = encodeURIComponent(oidcSettings.post_logout_redirect_uri.toString())
         this.manager.clearStaleState()
             .then(() => {
-                window.open(process.env.PROVIDER + '/auth-ui/logout?client_id=' + process.env.CLIENT_ID, "logoutWindow")
                 sessionStorage.clear();
-                window.location.replace(oidcSettings.post_logout_redirect_uri)
+                window.open(process.env.PROVIDER + '/auth-ui/logout?client_id=' + process.env.CLIENT_ID + '&redirect_uri=' + post_logout_redirect_uri, "_self")
             })
             .catch((error) => this.handleError(error))
     }
