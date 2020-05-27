@@ -1,6 +1,3 @@
-triger:
-  - master
-
 variables:
   subscription: 'AZ-RG-CS-MW-ACE-NA-Sandbox-01'
   appService: 'janrain-hosted-login-poc'
@@ -11,11 +8,12 @@ resources:
       type: git
       name: ACE-Website/pipelines-repo
 
-template: projects/prod.yml@templates
-parameters:
-  variables:
-    subscription: 'AZ-RG-CS-MW-ACE-NA-Sandbox-01'
-    appService: 'janrain-hosted-login-poc'
-    applicationVariableGroup: 'hosted-login.aceteam.tech - application - prod'
-    artifactSuffix: 'janrain'
-    environment: 'janrain'
+extends:
+  template: projects/prod.yml@templates
+  parameters:
+    variables:
+      subscription: 'AZ-RG-CS-MW-ACE-NA-Sandbox-01'
+      appService: 'janrain-hosted-login-poc'
+      applicationVariableGroup: 'hosted-login.aceteam.tech - application - prod'
+      artifactSuffix: 'janrain'
+      environment: 'janrain'
