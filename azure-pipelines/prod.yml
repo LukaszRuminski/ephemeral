@@ -1,8 +1,8 @@
 resources:
   repositories:
-  - repository: templates
-    type: git
-    name: ACE-Website/pipelines-repo
+    - repository: templates
+      type: git
+      name: 'ACE-Website/pipelines-repo'
 
 stages:
   - template: prod.yml@templates
