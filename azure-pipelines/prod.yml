@@ -6,20 +6,29 @@ variables:
   subscription: 'AZ-RG-CS-MW-ACE-NA-Sandbox-01'
   sppService: 'janrain-hosted-login-poc'
 
-stages:
-  - stage: StaticBuild
-    jobs:
-      - template: templates/job/static-build-job.yml
-        parameters:
-          artifactSuffix: 'janrain'
-          applicationVariableGroup: 'hosted-login.aceteam.tech - application - prod'
+resources:
+  repositories:
+    - repository: templates
+      type: git
+      name: ACE-Website/pipelines-repo
 
-  - stage: DeployJanrain
-    dependsOn: StaticBuild
-    jobs:
-      - template: templates/job/static-deploy-job.yml
-        parameters:
-          artifactSuffix: 'janrain'
-          azureSubscription: '$(subscription)'
-          environment: 'janrain'
-          azureAppService: '$(sppService)'
+extends:
+  template: projects/prod.yml@templates
+  parameters:
+    projectStages:
+    - stage: StaticBuild
+      jobs:
+        - template: templates/job/static-build-job.yml
+          parameters:
+            artifactSuffix: 'janrain'
+            applicationVariableGroup: 'hosted-login.aceteam.tech - application - prod'
+
+    - stage: DeployJanrain
+      dependsOn: StaticBuild
+      jobs:
+        - template: templates/job/static-deploy-job.yml
+          parameters:
+            artifactSuffix: 'janrain'
+            azureSubscription: '$(subscription)'
+            environment: 'janrain'
+            azureAppService: '$(sppService)'
