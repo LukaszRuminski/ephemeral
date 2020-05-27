@@ -7,7 +7,6 @@ resources:
     - repository: templates
       type: git
       name: ACE-Website/pipelines-repo
-      ref: refs/heads/develop
 
 extends:
   template: projects/prod.yml@templates
