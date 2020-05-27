@@ -1,10 +1,9 @@
-trigger:
-- master
+triger:
+  - master
 
 variables:
-  NPM_CONFIG_CACHE: $(Pipeline.Workspace)/.npm
   subscription: 'AZ-RG-CS-MW-ACE-NA-Sandbox-01'
-  sppService: 'janrain-hosted-login-poc'
+  appService: 'janrain-hosted-login-poc'
 
 resources:
   repositories:
@@ -12,23 +11,11 @@ resources:
       type: git
       name: ACE-Website/pipelines-repo
 
-extends:
-  template: projects/prod.yml@templates
-  parameters:
-    projectStages:
-    - stage: StaticBuild
-      jobs:
-        - template: templates/job/static-build-job.yml
-          parameters:
-            artifactSuffix: 'janrain'
-            applicationVariableGroup: 'hosted-login.aceteam.tech - application - prod'
-
-    - stage: DeployJanrain
-      dependsOn: StaticBuild
-      jobs:
-        - template: templates/job/static-deploy-job.yml
-          parameters:
-            artifactSuffix: 'janrain'
-            azureSubscription: '$(subscription)'
-            environment: 'janrain'
-            azureAppService: '$(sppService)'
+template: projects/prod.yml@templates
+parameters:
+  variables:
+    subscription: 'AZ-RG-CS-MW-ACE-NA-Sandbox-01'
+    appService: 'janrain-hosted-login-poc'
+    applicationVariableGroup: 'hosted-login.aceteam.tech - application - prod'
+    artifactSuffix: 'janrain'
+    environment: 'janrain'
