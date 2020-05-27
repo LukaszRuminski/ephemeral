@@ -1,6 +1,3 @@
-triger:
-  - master
-
 variables:
   subscription: 'AZ-RG-CS-MW-ACE-NA-Sandbox-01'
   appService: 'janrain-hosted-login-poc'
