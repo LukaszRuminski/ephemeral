@@ -1,15 +1,17 @@
+trigger:
+  - master
+
 resources:
   repositories:
   - repository: templates
     type: git
     name: ACE-Website/pipelines-repo
 
-stages:
-  template: prod.yml@templates
-  parameters:
-    projectVariables:
-      serviceConnectionName: 'AZ-RG-CS-MW-ACE-NA-Sandbox-01'
-      appService: 'janrain-hosted-login-poc'
-      applicationVariableGroup: 'hosted-login.aceteam.tech - application - prod'
-      artifactSuffix: 'janrain'
-      environment: 'janrain'
+template: prod.yml@templates
+parameters:
+  projectVariables:
+    serviceConnectionName: 'AZ-RG-CS-MW-ACE-NA-Sandbox-01'
+    appService: 'janrain-hosted-login-poc'
+    applicationVariableGroup: 'hosted-login.aceteam.tech - application - prod'
+    artifactSuffix: 'janrain'
+    environment: 'janrain'
