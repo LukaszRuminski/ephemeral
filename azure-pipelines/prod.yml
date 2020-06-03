@@ -16,6 +16,6 @@ stages:
       projectVariables:
         serviceConnectionName: $(serviceConnectionName)
         appService: $(appService)
-        applicationVariableGroup: '$(applicationVariableGroup)'
+        applicationVariableGroup: $(applicationVariableGroup)
         artifactSuffix: $(artifactSuffix)
         environment: $(environment)
