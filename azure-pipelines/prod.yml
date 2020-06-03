@@ -5,10 +5,10 @@ resources:
   repositories:
   - repository: templates
     type: git
-    name: ACE-Website/pipelines-repo
+    name: MW-Framework/MW-azure-pipelines
 
 stages:
-  - template: prod.yml@templates
+  - template: static-prod.yml@templates
     parameters:
       projectVariables:
         serviceConnectionName: 'AZ-RG-CS-MW-ACE-NA-Sandbox-01'
