@@ -11,13 +11,13 @@ resources:
     name: MW-Framework/MW-azure-pipelines
 
 extends:
-  - template: static-prod.yml@templates
-    parameters:
-      variableGroup:
-        variables:
-          - group: $(applicationVariableGroup)
-      projectVariables:
-        serviceConnectionName: $(serviceConnectionName)
-        appService: $(appService)
-        artifactSuffix: $(artifactSuffix)
-        environment: $(environment)
+  template: static-prod.yml@templates
+  parameters:
+    variableGroup:
+      variables:
+        - group: $(applicationVariableGroup)
+    projectVariables:
+      serviceConnectionName: $(serviceConnectionName)
+      appService: $(appService)
+      artifactSuffix: $(artifactSuffix)
+      environment: $(environment)
