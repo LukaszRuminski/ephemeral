@@ -1,9 +1,6 @@
 trigger:
   - master
 
-variables:
-  - group: 'project variables - prod'
-
 resources:
   repositories:
   - repository: templates
@@ -11,11 +8,14 @@ resources:
     name: MW-Framework/MW-azure-pipelines
 
 stages:
+  variables:
+    - group: 'project variables - prod'
+
   - template: static-prod.yml@templates
     parameters:
       projectVariables:
-        serviceConnectionName: $[variables.serviceConnectionName]
-        appService: $[variables.appService]
-        applicationVariableGroup: $[variables.applicationVariableGroup]
-        artifactSuffix: $[variables.artifactSuffix]
-        environment: $[variables.environment]
+        serviceConnectionName: $(serviceConnectionName)
+        appService: $(appService)
+        applicationVariableGroup: $(applicationVariableGroup)
+        artifactSuffix: $(artifactSuffix)
+        environment: $(environment)
