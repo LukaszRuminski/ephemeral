@@ -11,9 +11,9 @@ resources:
     name: MW-Framework/MW-azure-pipelines
 
 stages:
-  - stage: Check variable
+  - stage: CheckVariable
     jobs:
-      - job:  Check variable
+      - job:  CheckVariable
         steps:
         - script: echo $(applicationVariableGroup)
 
