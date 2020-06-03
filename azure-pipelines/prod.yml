@@ -1,6 +1,9 @@
 trigger:
   - master
 
+variables:
+  - group: 'project variables - prod'
+
 resources:
   repositories:
   - repository: templates
@@ -11,8 +14,8 @@ stages:
   - template: static-prod.yml@templates
     parameters:
       projectVariables:
-        serviceConnectionName: 'AZ-RG-CS-MW-ACE-NA-Sandbox-01'
-        appService: 'janrain-hosted-login-poc'
-        applicationVariableGroup: 'hosted-login.aceteam.tech - application - prod'
-        artifactSuffix: 'janrain'
-        environment: 'janrain'
+        serviceConnectionName: $[variables.serviceConnectionName]
+        appService: $[variables.appService]
+        applicationVariableGroup: $[variables.applicationVariableGroup]
+        artifactSuffix: $[variables.artifactSuffix]
+        environment: $[variables.environment]
