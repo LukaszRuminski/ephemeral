@@ -3,12 +3,13 @@ trigger:
 
 variables:
 - group: 'project variables - prod'
+- group: 'hosted-login.aceteam.tech - application - prod'
 
 resources:
   repositories:
   - repository: templates
     type: git
-    name: MW-Framework/MW-azure-pipelines
+    name: ACE-Website/pipelines-repo
 
 extends:
   template: static-prod.yml@templates
@@ -16,8 +17,5 @@ extends:
     projectVariables:
       serviceConnectionName: $(serviceConnectionName)
       appService: $(appService)
-      applicationVariableGroup: 
-        variables: 
-        - group: $(applicationVariableGroup)
       artifactSuffix: $(artifactSuffix)
       environment: $(environment)
