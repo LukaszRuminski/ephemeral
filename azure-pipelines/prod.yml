@@ -13,11 +13,9 @@ resources:
 extends:
   template: static-prod.yml@templates
   parameters:
-    variableGroup:
-      variables:
-        - group: $(applicationVariableGroup)
     projectVariables:
       serviceConnectionName: $(serviceConnectionName)
       appService: $(appService)
+      applicationVariableGroup: $(applicationVariableGroup)
       artifactSuffix: $(artifactSuffix)
       environment: $(environment)
