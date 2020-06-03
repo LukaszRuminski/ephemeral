@@ -3,7 +3,7 @@ trigger:
 
 variables:
 - group: 'project variables - prod'
-- group: '$(applicationVariableGroup)'
+- group: 'hosted-login.aceteam.tech - application - prod'
 
 resources:
   repositories:
