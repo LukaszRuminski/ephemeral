@@ -10,18 +10,14 @@ resources:
     type: git
     name: MW-Framework/MW-azure-pipelines
 
-stages:
-  - stage: CheckVariable
-    jobs:
-      - job:  CheckVariable
-        steps:
-        - script: echo $(applicationVariableGroup)
-
-#  - template: static-prod.yml@templates
-#    parameters:
-#      projectVariables:
-#        serviceConnectionName: $(serviceConnectionName)
-#        appService: $(appService)
-#        applicationVariableGroup: $(applicationVariableGroup)
-#        artifactSuffix: $(artifactSuffix)
-#        environment: $(environment)
+extends:
+  - template: static-prod.yml@templates
+    parameters:
+      variableGroup:
+        variables:
+          - group: $(applicationVariableGroup)
+      projectVariables:
+        serviceConnectionName: $(serviceConnectionName)
+        appService: $(appService)
+        artifactSuffix: $(artifactSuffix)
+        environment: $(environment)
