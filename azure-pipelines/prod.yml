@@ -1,6 +1,9 @@
 trigger:
   - master
 
+variables:
+- group: 'project variables - prod'
+
 resources:
   repositories:
   - repository: templates
@@ -8,9 +11,6 @@ resources:
     name: MW-Framework/MW-azure-pipelines
 
 stages:
-  variables:
-    - group: 'project variables - prod'
-
   - template: static-prod.yml@templates
     parameters:
       projectVariables:
