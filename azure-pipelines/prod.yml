@@ -16,6 +16,8 @@ extends:
     projectVariables:
       serviceConnectionName: $(serviceConnectionName)
       appService: $(appService)
-      applicationVariableGroup: $(applicationVariableGroup)
+      applicationVariableGroup: 
+        variables: 
+        - group: $(applicationVariableGroup)
       artifactSuffix: $(artifactSuffix)
       environment: $(environment)
