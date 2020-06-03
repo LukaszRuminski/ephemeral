@@ -17,11 +17,11 @@ stages:
         steps:
         - script: echo $(applicationVariableGroup)
 
-  - template: static-prod.yml@templates
-    parameters:
-      projectVariables:
-        serviceConnectionName: $(serviceConnectionName)
-        appService: $(appService)
-        applicationVariableGroup: $(applicationVariableGroup)
-        artifactSuffix: $(artifactSuffix)
-        environment: $(environment)
+#  - template: static-prod.yml@templates
+#    parameters:
+#      projectVariables:
+#        serviceConnectionName: $(serviceConnectionName)
+#        appService: $(appService)
+#        applicationVariableGroup: $(applicationVariableGroup)
+#        artifactSuffix: $(artifactSuffix)
+#        environment: $(environment)
