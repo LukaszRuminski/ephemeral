@@ -14,7 +14,8 @@ stages:
   - stage: Check variable
     jobs:
       - job:  Check variable
-        steps: echo $(applicationVariableGroup)
+        steps:
+        - script: echo $(applicationVariableGroup)
 
   - template: static-prod.yml@templates
     parameters:
