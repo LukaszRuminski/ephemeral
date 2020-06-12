@@ -15,7 +15,7 @@ extends:
   template: static-prod.yml@templates
   parameters:
     projectVariables:
-      serviceConnectionName: $(serviceConnectionName)
+      azureSubscription: $(azureSubscription)
       appService: $(appService)
       artifactSuffix: $(artifactSuffix)
       environment: $(environment)

@@ -1,0 +1,26 @@
+trigger:
+  - master
+
+variables:
+- group: 'project variables - prod'
+- group: 'hosted-login.aceteam.tech - application - prod'
+
+resources:
+  repositories:
+  - repository: templates
+    type: git
+    name: MW-Framework/MW-azure-pipelines
+
+extends:
+  template: ssr-prod.yml@templates
+  parameters:
+    projectVariables:
+      azureDdaName: $(azureDdaName),
+      azureSubscription: $(azureSubscription)
+      azureAppServiceName: $(azureAppServiceName)
+      environment: $(environment)
+      appSlot: $(appSlot)
+      hostName: $(hostName)
+      cname: $(cname)
+      dnsZoneName: $(dnsZoneName)
+      location: $(location)

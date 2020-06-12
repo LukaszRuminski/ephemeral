@@ -1,0 +1,14 @@
+trigger:
+  - none
+
+variables:
+- group: 'project variables - prod'
+
+resources:
+  repositories:
+  - repository: templates
+    type: git
+    name: MW-Framework/MW-azure-pipelines
+
+extends:
+  template: pr-verify.yml@templates

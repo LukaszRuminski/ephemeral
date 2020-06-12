@@ -1,0 +1,24 @@
+trigger:
+  - none
+
+variables:
+- group: 'project variables - prod'
+- group: 'hosted-login.aceteam.tech - application - prod'
+
+resources:
+  repositories:
+  - repository: templates
+    type: git
+    name: MW-Framework/MW-azure-pipelines
+
+extends:
+  template: app-gateway.yml@templates
+  parameters:
+    projectVariables:
+      azureSubscription: $(azureSubscription)
+      azureDdaName: $(azureDdaName)
+      applicationGatewayName: $(applicationGatewayName)
+      azureFunctionName: $(azureFunctionName)
+      ephemeralBasePath: $(ephemeralBasePath)
+      location: $(location)
+      ipRestrictionRule: $(ipRestrictionRule)

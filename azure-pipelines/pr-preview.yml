@@ -1,0 +1,21 @@
+trigger:
+  - none
+
+variables:
+- group: 'project variables - prod'
+
+resources:
+  repositories:
+  - repository: templates
+    type: git
+    name: MW-Framework/MW-azure-pipelines
+
+extends:
+  template: pr-preview.yml@templates
+  parameters:
+    projectVariables:
+      azureSubscription: $(azureSubscription)
+      azureDdaName: $(azureDdaName)
+      location: $(location)
+      ipRestrictionRule: $(ipRestrictionRule)
+      prHost: $(prHost)
