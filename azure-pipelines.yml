@@ -9,4 +9,4 @@ stages:
               azureSubscription: 'AZ-RG-CS-MW-ACE-NA-Sandbox-01'
               scriptLocation: inlineScript
               inlineScript: |
-                az storage account create --name aceteamstorage --resource-group AZ-RG-CS-MW-ACE-NA-Sandbox-01 --location eastus2 --kind StorageV2 
+                az storage account create --name aceteamstorage --resource-group AZ-RG-CS-MW-ACE-NA-Sandbox-01 --location eastus2 --kind StorageV2 --sku Standard_RAGRS
