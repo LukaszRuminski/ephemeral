@@ -16,6 +16,7 @@ extends:
   parameters:
     projectVariables:
       azureSubscription: $(azureSubscription)
-      appService: $(appService)
+      azureAppServiceName: $(azureAppServiceName)
+      azureAppServiceSlot: $(azureAppServiceSlot)
       artifactSuffix: $(artifactSuffix)
       environment: $(environment)
