@@ -1,0 +1,12 @@
+stages:
+  - stage: TestCLI
+    jobs:
+      - job: TestCLI
+        steps:
+          - task: AzureCLI@1
+            displayName: 'Test command'
+            inputs:
+              azureSubscription: 'AZ-RG-CS-MW-ACE-NA-Sandbox-01'
+              scriptLocation: inlineScript
+              inlineScript: |
+                az storage account create --name aceteamstorage --resource-group AZ-RG-CS-MW-ACE-NA-Sandbox-01 --location eastus2 --kind StorageV2 
