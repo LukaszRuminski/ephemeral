@@ -17,7 +17,6 @@ extends:
     projectVariables:
       azureSubscription: $(azureSubscription)
       azureDdaName: $(azureDdaName)
-      applicationGatewayName: $(applicationGatewayName)
       azureFunctionName: $(azureFunctionName)
       ephemeralBasePath: $(ephemeralBasePath)
       location: $(location)
