@@ -4,10 +4,11 @@
     "author": "ACE Team",
     "license": "unlicensed",
     "scripts": {
+        "build": "next build ./src",
         "start": "node server.js",
         "start:static": "npm start -- --static",
         "dev": "npm run check-quality && npm start",
-        "export": "npm run check-quality && next build ./src && next export ./src -o ./out",
+        "export": "npm run check-quality && npm build && next export ./src -o ./out",
         "postexport": "node config/sitemap-generator.js && node config/copy-files-for-static.js",
         "preview": "npm install && next build ./src",
         "lint": "npm run lint:js && npm run lint:styles",
