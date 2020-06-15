@@ -15,7 +15,7 @@ extends:
   template: ssr-prod.yml@templates
   parameters:
     projectVariables:
-      azureDdaName: $(azureDdaName),
+      azureDdaName: $(azureDdaName)
       azureSubscription: $(azureSubscription)
       azureAppServiceName: $(azureAppServiceName)
       environment: $(environment)
