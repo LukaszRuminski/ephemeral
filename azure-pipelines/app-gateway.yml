@@ -20,4 +20,3 @@ extends:
       azureFunctionName: $(azureFunctionName)
       ephemeralBasePath: $(ephemeralBasePath)
       location: $(location)
-      ipRestrictionRule: $(ipRestrictionRule)

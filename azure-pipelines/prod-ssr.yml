@@ -17,10 +17,10 @@ extends:
     projectVariables:
       azureDdaName: $(azureDdaName)
       azureSubscription: $(azureSubscription)
-      azureAppServiceName: $(azureAppServiceName)
+      azureAppServiceName: $(azureAppServiceName)-ssr
       environment: $(environment)
       appSlot: $(appSlot)
-      hostName: $(hostName)
-      cname: $(cname)
+      domain: $(domain)
+      subdomain: $(subdomain)
       dnsZoneName: $(dnsZoneName)
       location: $(location)

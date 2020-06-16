@@ -17,5 +17,4 @@ extends:
       azureSubscription: $(azureSubscription)
       azureDdaName: $(azureDdaName)
       location: $(location)
-      ipRestrictionRule: $(ipRestrictionRule)
       prHost: $(prHost)
