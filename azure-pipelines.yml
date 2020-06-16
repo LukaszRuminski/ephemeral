@@ -12,4 +12,4 @@ stages:
               azureSubscription: 'AZ-RG-CS-MW-ACE-NA-Sandbox-01'
               scriptLocation: inlineScript
               inlineScript: |
-                echo 'test : ${{ if length(azureAppServiceSlot) , 0}}'
+                echo 'test : ${{ if eq(length(azureAppServiceSlot), 0)}}'
