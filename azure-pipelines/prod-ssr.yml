@@ -19,7 +19,7 @@ extends:
       azureSubscription: $(azureSubscription)
       azureAppServiceName: $(azureAppServiceName)
       environment: $(environment)
-      appSlot: $(appSlot)
+      azureAppServiceSlot: $(azureAppServiceSlot)
       domain: $(domain)
       subdomain: $(subdomain)
       dnsZoneName: $(dnsZoneName)

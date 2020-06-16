@@ -2,7 +2,7 @@ trigger:
   - none
 
 variables:
-- group: 'project variables - prod'
+- group: 'project variables - ephemeral'
 
 resources:
   repositories:
@@ -17,4 +17,5 @@ extends:
       azureSubscription: $(azureSubscription)
       azureDdaName: $(azureDdaName)
       location: $(location)
-      prHost: $(prHost)
+      domain: $(domain)
+      subdomain: $(subdomain)
