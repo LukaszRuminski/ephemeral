@@ -6,7 +6,7 @@ stages:
     jobs:
       - job: TestCLI
         steps:
-          - ${{ if eq(variables.azureAppServiceSlot, null) }}:
+          - ${{ if eq(variables.azureAppServiceSlot, '') }}:
             - task: AzureCLI@1
               displayName: 'Test command'
               inputs:
