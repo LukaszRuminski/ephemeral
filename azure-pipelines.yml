@@ -6,10 +6,11 @@ stages:
     jobs:
       - job: TestCLI
         steps:
-          - task: AzureCLI@1
-            displayName: 'Test command'
-            inputs:
-              azureSubscription: 'AZ-RG-CS-MW-ACE-NA-Sandbox-01'
-              scriptLocation: inlineScript
-              inlineScript: |
-                echo `test : ${{ eq(azureAppServiceSlot, null)}}`
+          - ${{ if eq(variables.azureAppServiceSlot, null) }}:
+            - task: AzureCLI@1
+              displayName: 'Test command'
+              inputs:
+                azureSubscription: 'AZ-RG-CS-MW-ACE-NA-Sandbox-01'
+                scriptLocation: inlineScript
+                inlineScript: |
+                  echo `test`
