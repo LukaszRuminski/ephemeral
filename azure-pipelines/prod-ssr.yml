@@ -15,12 +15,12 @@ extends:
   template: ssr-prod.yml@templates
   parameters:
     projectVariables:
-      azureDdaName: $(azureDdaName)
-      azureSubscription: $(azureSubscription)
-      azureAppServiceName: $(azureAppServiceName)
-      environment: $(environment)
-      azureAppServiceSlot: $(azureAppServiceSlot)
-      domain: $(domain)
-      subdomain: $(subdomain)
-      dnsZoneName: $(dnsZoneName)
-      location: $(location)
+      azureDdaName: '$(azureDdaName)'
+      azureSubscription: '$(azureSubscription)'
+      azureAppServiceName: '$(azureAppServiceName)'
+      environment: '$(environment)'
+      azureAppServiceSlot: '$(azureAppServiceSlot)'
+      domain: '$(domain)'
+      subdomain: '$(subdomain)'
+      dnsZoneName: '$(dnsZoneName)'
+      location: '$(location)'
