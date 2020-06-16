@@ -12,4 +12,4 @@ stages:
               azureSubscription: 'AZ-RG-CS-MW-ACE-NA-Sandbox-01'
               scriptLocation: inlineScript
               inlineScript: |
-                echo $(azureAppServiceSlot)
+                echo '$(azureAppServiceSlot)''
