@@ -15,8 +15,8 @@ extends:
   template: app-gateway.yml@templates
   parameters:
     projectVariables:
-      azureSubscription: '$(azureSubscription)'
-      azureDdaName: '$(azureDdaName)'
-      azureFunctionName: '$(azureFunctionName)'
-      ephemeralBasePath: '$(ephemeralBasePath)'
-      location: '$(location)'
+      azureSubscription: $(azureSubscription)
+      azureDdaName: $(azureDdaName)
+      azureFunctionName: $(azureFunctionName)
+      ephemeralBasePath: $(ephemeralBasePath)
+      location: $(location)
