@@ -17,7 +17,7 @@ extends:
     projectVariables:
       azureDdaName: $(azureDdaName)
       azureSubscription: $(azureSubscription)
-      azureAppServiceName: $(azureAppServiceName)-static
+      azureAppServiceName: $(azureAppServiceName)
       azureAppServiceSlot: $(azureAppServiceSlot)
       artifactSuffix: $(artifactSuffix)
       environment: $(environment)
