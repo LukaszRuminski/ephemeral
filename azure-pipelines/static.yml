@@ -2,8 +2,8 @@ trigger:
   - master
 
 variables:
-- group: 'project variables - prod'
-- group: 'hosted-login.aceteam.tech - application - prod'
+- group: 'project variables - <environment>'
+- group: '<domain> - application - <environment>'
 
 resources:
   repositories:
@@ -12,4 +12,4 @@ resources:
     name: MW-Framework/MW-azure-pipelines
 
 extends:
-  template: ssr-prod.yml@templates
+  template: static-prod.yml@templates

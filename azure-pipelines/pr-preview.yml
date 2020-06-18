@@ -12,10 +12,3 @@ resources:
 
 extends:
   template: pr-preview.yml@templates
-  parameters:
-    projectVariables:
-      azureSubscription: '$(azureSubscription)'
-      azureDdaName: '$(azureDdaName)'
-      location: '$(location)'
-      domain: '$(domain)'
-      subdomain: '$(subdomain)'

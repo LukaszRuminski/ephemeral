@@ -13,11 +13,3 @@ resources:
 
 extends:
   template: static-prod.yml@templates
-  parameters:
-    projectVariables:
-      azureDdaName: '$(azureDdaName)'
-      azureSubscription: '$(azureSubscription)'
-      azureAppServiceName: '$(azureAppServiceName)'
-      azureAppServiceSlot: '$(azureAppServiceSlot)'
-      artifactSuffix: '$(artifactSuffix)'
-      environment: '$(environment)'

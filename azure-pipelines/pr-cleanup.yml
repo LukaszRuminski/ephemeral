@@ -12,7 +12,3 @@ resources:
 
 extends:
   template: pr-cleanup.yml@templates
-  parameters:
-    projectVariables:
-      azureSubscription: '$(azureSubscription)'
-      azureDdaName: '$(azureDdaName)'
