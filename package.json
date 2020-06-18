@@ -5,7 +5,6 @@
     "license": "unlicensed",
     "scripts": {
         "build": "next build ./src",
-        "postbuild": "node config/copy-files-for-static.js",
         "start": "node server.js",
         "start:static": "npm start -- --static",
         "dev": "npm run check-quality && npm start",
