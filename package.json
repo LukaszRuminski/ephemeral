@@ -5,6 +5,7 @@
     "license": "unlicensed",
     "scripts": {
         "build": "next build ./src",
+        "postbuild": "node node config/copy-files-for-static.js",
         "start": "node server.js",
         "start:static": "npm start -- --static",
         "dev": "npm run check-quality && npm start",
@@ -36,6 +37,7 @@
         "graphql": "^14.6.0",
         "graphql-tag": "^2.10.3",
         "next": "^9.4.0",
+        "dotenv": "^8.1.0",
         "next-images": "^1.4.0",
         "node-fetch": "^2.6.0",
         "prop-types": "^15.7.2",
