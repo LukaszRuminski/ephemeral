@@ -3,9 +3,10 @@ const path = require('path')
 const express = require("express")
 require('dotenv').config()
 
-const dev = process.env.NODE_ENV !== 'production'
 const { PORT } = process.env
-const app = next({dev, dir: './src'})
+const dev = process.env.NODE_ENV !== 'production'
+const dir = dev ? './src' : path.resolve(__dirname)
+const app = next({ dev, dir })
 const handle = app.getRequestHandler()
 const server = express()
 
