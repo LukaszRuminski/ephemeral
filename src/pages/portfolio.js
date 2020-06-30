@@ -1,10 +1,9 @@
 import React, { Component } from 'react'
-import H1 from 'Component/H1/H1'
-import Layout from 'Component/Layout/Layout'
-import PortfolioItem from 'Component/PortfolioItem/PortfolioItem'
+import H1 from '../components/H1/H1'
+import Layout from '../components/Layout/Layout'
+import PortfolioItem from '../components/PortfolioItem/PortfolioItem'
 import { getPortfolioItems } from '../adapters/contentful/contentful.adapters'
 import styled from "styled-components"
-import r from 'Config/router.config'
 import PropTypes from 'prop-types'
 
 const PortfolioWrapper = styled.div`
@@ -31,7 +30,7 @@ class Portfolio extends Component {
         return (
             <Layout pageTitle={'ACE: Portfolio'} secondary>
                 <PortfolioWrapper>
-                    <H1 title={r.portfolio.linkName} color={'#E61E32'}/>
+                    <H1 title='Portfolio' color={'#E61E32'}/>
 
                     <PortfolioItemsWrapper>
                         {portfolioItems.map(item => (

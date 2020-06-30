@@ -1,11 +1,10 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import H1 from 'Component/H1/H1'
-import Layout from 'Component/Layout/Layout'
+import H1 from '../components/H1/H1'
+import Layout from '../components/Layout/Layout'
 import { getBlogPosts } from '../adapters/contentful/contentful.adapters'
-import r from 'Config/router.config'
 import styled from 'styled-components'
-import BlogPostCard from 'Component/BlogPostCard/BlogPostCard'
+import BlogPostCard from '../components/BlogPostCard/BlogPostCard'
 
 const BodyWrapper = styled.div`
   display: flex;
@@ -32,7 +31,7 @@ class Blog extends React.Component {
             <Background>
                 <Layout pageTitle='Ace: Blog' secondary>
                     <BodyWrapper>
-                        <H1 title={r.blog.linkName}/>
+                        <H1 title='Blog'/>
                         {
                             blogPosts
                                 .map(blogPost => (

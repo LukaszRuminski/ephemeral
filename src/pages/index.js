@@ -1,5 +1,5 @@
 import React from 'react'
-import Layout from 'Component/Layout/Layout'
+import Layout from '../components/Layout/Layout'
 import styled from 'styled-components'
 
 const AceLogoWrapper = styled.div`

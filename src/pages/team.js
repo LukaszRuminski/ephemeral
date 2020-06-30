@@ -1,11 +1,10 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import Layout from 'Component/Layout/Layout'
-import H1 from 'Component/H1/H1'
-import TeamMembers from 'Component/TeamMembers/TeamMembers'
+import Layout from '../components/Layout/Layout'
+import H1 from '../components/H1/H1'
+import TeamMembers from '../components/TeamMembers/TeamMembers'
 import { getTeamMembers } from "../adapters/contentful/contentful.adapters"
 import styled from 'styled-components'
-import r from 'Config/router.config'
 
 const TeamsWrapper = styled.div`
   display: flex;
@@ -26,7 +25,7 @@ class Team extends Component {
         return (
             <Layout pageTitle={'ACE: Team'} secondary>
                 <TeamsWrapper>
-                    <H1 title={r.team.linkName} color={'#E61E32'}/>
+                    <H1 title='Team' color={'#E61E32'}/>
                     <TeamMembers team={teamMembers}/>
                 </TeamsWrapper>
             </Layout>

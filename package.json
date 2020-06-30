@@ -84,5 +84,26 @@
             "<rootDir>/out/",
             "<rootDir>/node_modules/"
         ]
+    },
+    "robots": {
+        "prod": {
+            "userAgent": [
+                "*"
+            ],
+            "allow": [
+                "/"
+            ]
+          },
+          "dev": {
+            "userAgent": [
+                "*"
+            ],
+            "disallow": [
+                "*"
+            ],
+            "noindex": [
+                "*"
+            ]
+        }
     }
 }

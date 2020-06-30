@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
-import Layout from 'Component/Layout/Layout'
-import H1 from 'Component/H1/H1'
+import Layout from '../Layout/Layout'
+import H1 from '../H1/H1'
 import { AuthContext } from '../../auth/authContext'
 import {
     Container,
@@ -20,7 +20,7 @@ class Unauthorized extends Component {
 
         return (
             <Layout pageTitle={'ACE: Unauthorized'} secondary>
-                <UnauthorizedWrapper><H1 title={'Unauthorized Page'}/>
+                <UnauthorizedWrapper><H1 title='Unauthorized Page'/>
                     <Container>
                         <ContainerH1> 401 </ContainerH1>
                         <ContainerH2>Oops! Your not authorized to view this page</ContainerH2>

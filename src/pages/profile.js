@@ -1,9 +1,9 @@
 import React, { Component } from 'react'
-import Layout from 'Component/Layout/Layout'
-import H1 from 'Component/H1/H1'
+import Layout from '../components/Layout/Layout'
+import H1 from '../components/H1/H1'
 import styled from 'styled-components'
 import { AuthContext } from "../auth/authContext"
-import Unauthorized from 'Component/Unauthorized/Unauthorized'
+import Unauthorized from '../components/Unauthorized/Unauthorized'
 
 const ProfileWrapper = styled.div`
   display: flex;
@@ -70,7 +70,7 @@ class Profile extends Component {
             <>
                 {authenticated? isProfileAvailable &&
                 <Layout pageTitle={'ACE: Profile'} secondary>
-                    <ProfileWrapper><H1 title={'Profile Page'}/>{this.renderUserInfo()}</ProfileWrapper>
+                    <ProfileWrapper><H1 title='Profile Page'/>{this.renderUserInfo()}</ProfileWrapper>
                 </Layout> : <Unauthorized/>
                 }
             </>

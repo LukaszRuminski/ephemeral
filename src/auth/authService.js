@@ -1,3 +1,4 @@
+
 import {Log, UserManager, WebStorageStateStore} from 'oidc-client'
 import {oidcSettings} from './oidcSettings'
 
@@ -11,9 +12,9 @@ class AuthService {
         })
 
         this.manager.events.addUserLoaded(() => {
-            if (window.location.href.indexOf("code") !== -1) {
-                this.navigateToScreen();
-            }
+            // if (router.pathname.indexOf("code") !== -1) {
+            //     this.navigateToScreen();
+            // }
         })
 
         this.manager.events.addAccessTokenExpired(() => {

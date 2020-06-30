@@ -1,6 +1,5 @@
 import React, { Component, Fragment } from 'react'
 import { withRouter } from 'next/router'
-import routerConfig from 'Config/router.config'
 import PropTypes from 'prop-types'
 import {
     AceHeader,
@@ -17,6 +16,8 @@ import {
     AceIconMenu,
     AceMenuLinkMobile
 } from './Header.styles'
+import Link from 'next/link'
+
 
 import { AuthContext } from '../../auth/authContext'
 
@@ -52,14 +53,23 @@ class Header extends Component {
                     </AceBrandWrapper>
 
                     <AceMenu>
-                        <AceMenuLink href={routerConfig.team.slug} secondary={secondary}
-                            active={router.pathname === routerConfig.team.slug}>Team</AceMenuLink>
-                        <AceMenuLink href={routerConfig.portfolio.slug} secondary={secondary}
-                            active={router.pathname === routerConfig.portfolio.slug}>Portfolio</AceMenuLink>
-                        <AceMenuLink href={routerConfig.blog.slug} secondary={secondary}
-                            active={router.pathname === routerConfig.blog.slug}>Blog</AceMenuLink>
-                        {authenticated && <AceMenuLink href={routerConfig.profile.slug} secondary={secondary}
-                            active={router.pathname === routerConfig.profile.slug}>Profile</AceMenuLink>}
+                        <Link href="/team">
+                            <AceMenuLink  secondary={secondary}
+                                active={router.pathname === '/team'}>Team</AceMenuLink>
+                        </Link>
+                        <Link href="/portfolio">
+                        <AceMenuLink secondary={secondary}
+                            active={router.pathname === '/portfolio'}>Portfolio</AceMenuLink>
+                        </Link>
+                        <Link href="/blog">
+                        <AceMenuLink secondary={secondary}
+                            active={router.pathname === '/blog'}>Blog</AceMenuLink>
+                        </Link>
+                        {authenticated &&
+                        <Link href="/profile">
+                            <AceMenuLink secondary={secondary}
+                                active={router.pathname === '/profile'}>Profile</AceMenuLink>
+                        </Link>}
                         {showLoginLogout}
                     </AceMenu>
 
@@ -79,17 +89,25 @@ class Header extends Component {
                                 onClick={() => {
                                     this.setState({ menuOpen: !menuOpen })
                                 }}/>
-                            <AceMenuLinkMobile href={routerConfig.team.slug} secondary={secondary}>
-                                Team
-                            </AceMenuLinkMobile>
-                            <AceMenuLinkMobile href={routerConfig.portfolio.slug} secondary={secondary}>
-                                Portfolio
-                            </AceMenuLinkMobile>
-                            <AceMenuLinkMobile href={routerConfig.blog.slug} secondary={secondary}>
-                                Blog
-                            </AceMenuLinkMobile>
-                            {authenticated && <AceMenuLinkMobile href={routerConfig.profile.slug} secondary={secondary}>
-                                Profile</AceMenuLinkMobile>}
+                            <Link href="/team">
+                                <AceMenuLinkMobile href='/team' secondary={secondary}>
+                                    Team
+                                </AceMenuLinkMobile>
+                            </Link>
+                            <Link href="/team">
+                                <AceMenuLinkMobile href='/portfolio' secondary={secondary}>
+                                    Portfolio
+                                </AceMenuLinkMobile>
+                            </Link>
+                            <Link href="/team">
+                                <AceMenuLinkMobile href='/blog' secondary={secondary}>
+                                    Blog
+                                </AceMenuLinkMobile>
+                            </Link>
+                            {authenticated && <Link href="/team">
+                                <AceMenuLinkMobile href='/profile' secondary={secondary}>
+                                    Profile</AceMenuLinkMobile>
+                            </Link>}
                             {showLoginLogout}
                         </AceHiddenMenu>
                     </AceMenuMobile>
