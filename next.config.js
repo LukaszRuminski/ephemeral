@@ -31,8 +31,8 @@ const nextConfig =
 
             },
             webpack(config) {
-                config.resolve.alias['Component'] = path.join(__dirname, 'src', 'components')
-                config.resolve.alias['Config'] = path.join(__dirname, 'config')
+                config.resolve.alias['Component'] = join(__dirname, 'src', 'components')
+                config.resolve.alias['Config'] = join(__dirname, 'config')
                 return config
             }
         })
