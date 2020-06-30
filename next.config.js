@@ -1,4 +1,5 @@
 require('dotenv').config()
+require('path')
 const withCSS = require('@zeit/next-css')
 const withImages = require('next-images')
 const fs = require('fs')
