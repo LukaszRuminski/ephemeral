@@ -1,7 +1,7 @@
 require('dotenv').config()
-const { DOMAIN_URL, OUT_PATH } = process.env
+const { DOMAIN_URL } = process.env
 const fs = require('fs')
-const formatDate = require('../src/helpers/dateFormat.helper')
+const formatDate = require('../../src/helpers/dateFormat.helper')
 
 const getPathsObject = () => {
     const fileObj = {}
@@ -16,9 +16,8 @@ const getPathsObject = () => {
             if (fileStats.isDirectory()) {
                 walkSync(`${filePath}/`)
             } else {
-                if(file.endsWith('.html')) {
-
-                    filePath = filePath.replace(`${OUT_PATH}/`, '')
+                if (file.endsWith('.html')) {
+                    filePath = filePath.replace(`out/`, '')
                     filePath = filePath.replace('index.html', '')
                     fileObj[`/${filePath}`] = {
                         lastModified: fileStats.mtime
@@ -28,21 +27,26 @@ const getPathsObject = () => {
         })
     }
 
-    walkSync(`${OUT_PATH}/`)
+    walkSync(`out/`)
 
     return fileObj
 }
 
-const pathsObj = getPathsObject()
+const generateSitemap = () => {
 
-const sitemapXml = `<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-    ${Object.keys(pathsObj).map(
+    const pathsObj = getPathsObject()
+
+    const sitemapXml = `<?xml version="1.0" encoding="UTF-8"?>
+    <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+        ${Object.keys(pathsObj).map(
         path => `<url>
-        <loc>${DOMAIN_URL}${path}</loc>
-        <lastmod>${formatDate(new Date(pathsObj[path].lastModified))}</lastmod>
+            <loc>${DOMAIN_URL}${path}</loc>
+            <lastmod>${formatDate(new Date(pathsObj[path].lastModified))}</lastmod>
         </url>`
     )}
-</urlset>`
+    </urlset>`
 
-fs.writeFileSync(`${OUT_PATH}/sitemap.xml`, sitemapXml)
+    fs.writeFileSync(`out/sitemap.xml`, sitemapXml)
+}
+
+module.exports = generateSitemap

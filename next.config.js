@@ -1,13 +1,24 @@
-const path = require('path')
 require('dotenv').config()
 const withCSS = require('@zeit/next-css')
 const withImages = require('next-images')
-const getRoutes = require('./config/routes')
+const fs = require('fs')
+const { join } = require('path')
+const { promisify } = require('util')
+const copyFile = promisify(fs.copyFile)
+const { generateRobots } = require('./config/generators')
 
 const nextConfig =
     withCSS(
         withImages({
-            exportPathMap: getRoutes,
+            exportPathMap: async function (defaultPathMap, { dev, dir, outDir, distDir, buildId }) {
+                await generateRobots(dev)
+
+                if (!dev) {
+                    await copyFile(join(__dirname, 'config', 'robots.txt'), join(outDir, 'robots.txt'))
+                }
+
+                return defaultPathMap
+            },
             exportTrailingSlash: true,
             distDir: '../.next',
             env: {

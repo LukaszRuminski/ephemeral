@@ -9,7 +9,7 @@ module.exports = {
     "verbose": true,
     "rootDir": "..",
     "roots": ["<rootDir>"],
-    "testMatch": ["**/*e2e.[jt]s?(x)"],
+    "testMatch": ["**/*.e2e.[jt]s?(x)"],
     "testPathIgnorePatterns": [
         "<rootDir>/.next/",
         "<rootDir>/out/",
