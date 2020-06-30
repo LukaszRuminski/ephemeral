@@ -21,7 +21,7 @@ const nextConfig =
                 return defaultPathMap
             },
             exportTrailingSlash: true,
-            distDir: '../.next',
+            distDir: process.env.DIST_DIRECTORY,
             env: {
                 CF_SPACE_ID: process.env.CF_SPACE_ID,
                 CF_ENVIRONMENT: process.env.CF_ENVIRONMENT,
