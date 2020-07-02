@@ -1,4 +1,4 @@
-process.env.AZURE_FUNCTION = "true"
+process.env.AZURE_FUNCTION = true
 process.env.NODE_ENV = "production"
 
 const azureFunctionHandler = require('azure-aws-serverless-express')
