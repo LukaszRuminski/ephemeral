@@ -1,5 +1,4 @@
 require('dotenv').config()
-require('path')
 const withCSS = require('@zeit/next-css')
 const withImages = require('next-images')
 const fs = require('fs')
@@ -21,7 +20,7 @@ const nextConfig =
                 return defaultPathMap
             },
             exportTrailingSlash: true,
-            distDir: process.env.DIST_DIRECTORY,
+            distDir: '../.next',
             env: {
                 CF_SPACE_ID: process.env.CF_SPACE_ID,
                 CF_ENVIRONMENT: process.env.CF_ENVIRONMENT,
