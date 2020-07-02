@@ -8,3 +8,4 @@ Forked form MW seed repository.
 1. Setup CI/CD (see [Azure Pipelines](./docs/azure-pipelines.md))
 1. Setup tests (see [Tests](./docs/tests.md))
 1. Adjust the README.md
+1. just for test
