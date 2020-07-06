@@ -1,5 +1,5 @@
 const createServer = require('next/dist/server/lib/start-server.js').default;
-const port = process.env.PORT || 3000
+const port = '8080'
 
 const server = createServer({dir: './code'}, port).then(async app => {
     console.log(`started server on http://localhost:${port}`)
