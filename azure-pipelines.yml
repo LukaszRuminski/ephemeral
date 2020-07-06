@@ -1,0 +1,16 @@
+variables:
+- group: 'project variables - prod'
+
+stages:
+  - stage: TestCLI
+    jobs:
+      - job: TestCLI
+        steps:
+          - ${{ if ne(variables.azureAppServiceSlot, '') }}:
+            - task: AzureCLI@1
+              displayName: 'Test command'
+              inputs:
+                azureSubscription: 'AZ-RG-CS-MW-ACE-NA-Sandbox-01'
+                scriptLocation: inlineScript
+                inlineScript: |
+                  echo `test`
