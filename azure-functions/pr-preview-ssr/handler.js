@@ -17,7 +17,7 @@ function azureFunctionHandler ({ hostname, port }) {
         let pathname = url.pathname
 
         const requestOptions = {
-            host: hostname,
+            hostname: hostname,
             port: port,
             path: pathname,
             method: req.method,
