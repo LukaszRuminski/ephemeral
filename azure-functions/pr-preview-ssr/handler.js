@@ -1,7 +1,9 @@
 const http = require("http")
 const isType = require('type-is')
 
-function azureFunctionHandler ({ hostname, port }) {
+function azureFunctionHandler (server) {
+    const port = process.env.port || process.env.PORT || 3000
+    server(port)
 
     const getContentType = (params) => {
         return params.contentTypeHeader ? params.contentTypeHeader.split(';')[0] : ''
@@ -17,11 +19,12 @@ function azureFunctionHandler ({ hostname, port }) {
         let pathname = url.pathname
 
         const requestOptions = {
-            hostname: hostname,
-            port: port,
             path: pathname,
             method: req.method,
-            headers: Object.assign({}, req.headers)
+            headers: Object.assign({}, req.headers),
+            host: req.headers.Host,
+            hostname: req.headers.Host,
+            port: port
         }
 
         const request = http.request(requestOptions, (res) => {

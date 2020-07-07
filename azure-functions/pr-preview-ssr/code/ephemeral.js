@@ -1,9 +1,8 @@
 const createServer = require('next/dist/server/lib/start-server.js').default;
-const port = process.env.port || process.env.PORT || 80
+const server = async (port) => {
+    const server = await createServer({dir: './pr-preview-ssr/code'}, port)
 
-const server = createServer({dir: './code'}, port).then(async app => {
-    console.log(`started server on http://localhost:${port}`)
-    await app.prepare()
-})
+    return  Promise.resolve(server)
+}
 
-module.exports = { server, hostname: 'localhost', port}
+exports.server = server
