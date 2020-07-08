@@ -66,7 +66,8 @@ const server = http.createServer(( ) => handler(context.req, context.res))
 
 module.exports = (context, req) => {
     const server = createServer(context)
-
+    
+    server.listen(getSocketPath(server._socketPathSuffix))
 
 
     let url = new URL(context.req.url)
