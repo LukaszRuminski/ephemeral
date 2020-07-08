@@ -35,11 +35,15 @@ const isContentTypeBinaryMimeType = (params) => {
 }
 
 const createServer = (context) => {
+    
+    const server = http.createServer((req, res ) => {
+        return handler(context.req, res)
+    })
 
     server._socketPathSuffix = getRandomString()
     server.on('listening', () => {
         server._isListening = true
-        context.log(`server listening ${server}`)
+        context.log(`server listening ${server._socketPathSuffix}`)
 
     })
     server.on('close', () => {
@@ -47,7 +51,6 @@ const createServer = (context) => {
             context.log('server closed')
         })
         .on('error', (error) => {
-            /* istanbul ignore else */
             if (error.code === 'EADDRINUSE') {
                 context.warn(`WARNING: Attempting to listen on socket ${getSocketPath(server._socketPathSuffix)}, but it is already in use. This is likely as a result of a previous invocation error or timeout. Check the logs for the invocation(s) immediately prior to this for root cause, and consider increasing the timeout and/or cpu/memory allocation if this is purely as a result of a timeout. aws-serverless-express will restart the Node.js server listening on a new port and continue with this request.`)
                 server._socketPathSuffix = getRandomString()
@@ -61,33 +64,32 @@ const createServer = (context) => {
     return server
 }
 
-const server = http.createServer(( ) => handler(context.req, context.res))
+const startServer = (server) => server.listen(getSocketPath(server._socketPathSuffix))
 
 
 module.exports = (context, req) => {
     const server = createServer(context)
     
-    server.listen(getSocketPath(server._socketPathSuffix))
+    startServer(server)
 
 
     let url = new URL(context.req.url)
     let pathname = url.pathname
-
+    
     const requestOptions = {
         path: pathname,
         method: req.method,
         headers: Object.assign({}, req.headers),
         socketPath: getSocketPath(server._socketPathSuffix)
     }
-
-   const request = http.request(requestOptions, (res) => {
+    const request = http.request(requestOptions, (res) => {
         const buffer = []
 
         res.on('data', (chunk) => buffer.push(chunk))
 
         res.on("end", () => {
             const bodyBuffer = Buffer.concat(buffer)
-            const status = res.statusCode
+            const statusCode = res.statusCode
             const headers = res.headers
 
             if (headers['transfer-encoding'] === 'chunked') {
@@ -98,8 +100,10 @@ module.exports = (context, req) => {
             const isBase64Encoded = isContentTypeBinaryMimeType({contentType, binaryMimeTypes: ['*/*']})
             const body = bodyBuffer
 
-            context.res = {status, body, headers, isBase64Encoded}
-            context.done();
+            context.res = {statusCode, body, headers, isBase64Encoded}
+            context.done()
+    
+            return server
         });
     }).on("error", (error) => {
         context.log('error');
@@ -107,8 +111,11 @@ module.exports = (context, req) => {
             status: 500,
             body: error
         };
-        context.done();
-    });
+        context.done()
+    })
+    
     request.end()
+    // request.write('test')
+    // request.end()
 
 }
