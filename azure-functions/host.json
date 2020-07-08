@@ -12,5 +12,5 @@
         "id": "Microsoft.Azure.Functions.ExtensionBundle",
         "version": "[1.*, 2.0.0)"
     },
-    "functions": ["next-proxy", "pr-preview-ssr"]
+    "functions": ["pr-preview-ssr"]
 }

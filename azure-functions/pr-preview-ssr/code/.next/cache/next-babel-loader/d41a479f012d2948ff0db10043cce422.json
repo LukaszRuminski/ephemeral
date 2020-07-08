@@ -1,0 +1,1 @@
+{"ast":null,"code":"const gql = require('graphql-tag');\n\nconst team = gql`\nquery getTeamPage {\n  teamMemberCollection {\n    items {\n      sys {\n        id\n      }\n      firstName\n      lastName\n      description\n      imageUrl\n      imageAltText\n    }\n  }\n}`;\nmodule.exports = team;","map":null,"metadata":{},"sourceType":"script"}

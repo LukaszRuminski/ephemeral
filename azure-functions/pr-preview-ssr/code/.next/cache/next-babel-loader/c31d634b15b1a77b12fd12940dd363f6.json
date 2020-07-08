@@ -1,0 +1,1 @@
+{"ast":null,"code":"import styled from 'styled-components';\nexport const TeamMembersWrapper = styled.div.withConfig({\n  displayName: \"TeamMembersstyles__TeamMembersWrapper\",\n  componentId: \"sc-19jxf4r-0\"\n})([\"display:flex;justify-content:center;flex-wrap:wrap;\"]);","map":null,"metadata":{},"sourceType":"module"}

@@ -1,0 +1,1 @@
+{"ast":null,"code":"import styled from 'styled-components';\nexport var AceLayout = styled.div.withConfig({\n  displayName: \"Layoutstyles__AceLayout\",\n  componentId: \"v3v8dz-0\"\n})([\"padding-top:150px;font-family:\\\"IBM Plex Sans SemiBold\\\",sans-serif;\"]);","map":null,"metadata":{},"sourceType":"module"}

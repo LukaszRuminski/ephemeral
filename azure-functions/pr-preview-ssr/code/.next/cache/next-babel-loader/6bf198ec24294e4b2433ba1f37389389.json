@@ -1,0 +1,1 @@
+{"ast":null,"code":"const gql = require('graphql-tag');\n\nconst article = gql`\nquery getPost($articleId: String!) {\n  blogPost(id: $articleId) {\n    date\n    title\n    body\n    author\n    image {\n      file {\n        url\n      }\n      url,\n      altText\n    }\n  }\n}`;\nmodule.exports = article;","map":null,"metadata":{},"sourceType":"script"}

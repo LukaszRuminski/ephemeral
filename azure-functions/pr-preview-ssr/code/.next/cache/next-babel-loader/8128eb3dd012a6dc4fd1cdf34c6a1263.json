@@ -1,0 +1,1 @@
+{"ast":null,"code":"var __jsx = React.createElement;\nimport React from 'react';\nimport { MainStyle } from './H1.styles';\n\nvar H1 = function H1(_ref) {\n  var title = _ref.title,\n      color = _ref.color;\n  return __jsx(MainStyle, {\n    color: color\n  }, title);\n};\n\nexport default H1;","map":null,"metadata":{},"sourceType":"module"}

@@ -1,0 +1,1 @@
+{"ast":null,"code":"const gql = require('graphql-tag');\n\nconst GET_GLOBAL_LABELS = gql`\nquery getGlobalLabels {\n  labelGroupCollection(limit: 1, where: {id: \"global\"}) {\n    items {\n      name\n      labels\n    }\n  }\n}`;\nmodule.exports = GET_GLOBAL_LABELS;","map":null,"metadata":{},"sourceType":"script"}
