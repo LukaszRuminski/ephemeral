@@ -34,25 +34,27 @@ const isContentTypeBinaryMimeType = (params) => {
     return params.binaryMimeTypes.length > 0 && !!isType.is(params.contentType, params.binaryMimeTypes)
 }
 
-const createServer = () => {
+const createServer = (context) => {
 
     server._socketPathSuffix = getRandomString()
     server.on('listening', () => {
         server._isListening = true
+        context.log(`server listening ${server}`)
 
     })
     server.on('close', () => {
             server._isListening = false
+            context.log('server closed')
         })
         .on('error', (error) => {
             /* istanbul ignore else */
             if (error.code === 'EADDRINUSE') {
-                console.warn(`WARNING: Attempting to listen on socket ${getSocketPath(server._socketPathSuffix)}, but it is already in use. This is likely as a result of a previous invocation error or timeout. Check the logs for the invocation(s) immediately prior to this for root cause, and consider increasing the timeout and/or cpu/memory allocation if this is purely as a result of a timeout. aws-serverless-express will restart the Node.js server listening on a new port and continue with this request.`)
+                context.warn(`WARNING: Attempting to listen on socket ${getSocketPath(server._socketPathSuffix)}, but it is already in use. This is likely as a result of a previous invocation error or timeout. Check the logs for the invocation(s) immediately prior to this for root cause, and consider increasing the timeout and/or cpu/memory allocation if this is purely as a result of a timeout. aws-serverless-express will restart the Node.js server listening on a new port and continue with this request.`)
                 server._socketPathSuffix = getRandomString()
                 // return server.close(() => startServer(server))
             } else {
-                console.log('ERROR: server error')
-                console.error(error)
+                context.log('ERROR: server error')
+                context.error(error)
             }
         })
 
@@ -63,7 +65,7 @@ const server = http.createServer(( ) => handler(context.req, context.res))
 
 
 module.exports = (context, req) => {
-    const server = createServer()
+    const server = createServer(context)
 
 
 
